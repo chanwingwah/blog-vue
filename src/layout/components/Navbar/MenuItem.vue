@@ -1,6 +1,7 @@
 <template>
   <div class="menu">
     <router-link class="menu-link" :to="to" :class="{ active: active }">
+      <i :class="icon" class="menu-icon"></i>
       {{ title }}
     </router-link>
   </div>
@@ -17,6 +18,9 @@ export default {
       type: String
     },
     title: {
+      type: String
+    },
+    icon: {
       type: String
     }
   },
@@ -42,6 +46,10 @@ export default {
 
   &.active {
     color: #333333;
+  }
+
+  .menu-icon {
+    margin: 5px;
   }
 }
 </style>

@@ -12,6 +12,7 @@
           v-for="(menu, index) in memus"
           :key="index"
           :title="menu.title"
+          :icon="menu.icon"
           :to="menu.to"
         />
       </div>
@@ -37,19 +38,23 @@ export default {
       memus: [
         {
           title: "首页",
-          to: "/home"
+          to: "/home",
+          icon: "iconfont icon-home"
         },
         {
           title: "行博",
-          to: "/walking"
+          to: "/walking",
+          icon: "iconfont icon-dongtai"
         },
         {
           title: "我的书单",
-          to: "/book"
+          to: "/book",
+          icon: "iconfont icon-book"
         },
         {
           title: "关于",
-          to: "/about"
+          to: "/about",
+          icon: "iconfont icon-me"
         }
       ]
     };
