@@ -27,6 +27,8 @@ export default {
 .menu {
   height: 100%;
   margin: 0 10px;
+  color: #999999;
+  font-size: 18px;
 }
 .menu-link {
   height: 100%;
@@ -35,11 +37,11 @@ export default {
   align-items: center;
   cursor: pointer;
   &:hover {
-    color: #ffffff;
+    color: #666666;
   }
 
   &.active {
-    color: #ffffff;
+    color: #333333;
   }
 }
 </style>
