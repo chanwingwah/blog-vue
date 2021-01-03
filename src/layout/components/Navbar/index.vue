@@ -7,14 +7,20 @@
         </router-link>
       </div>
       <div class="menus">
-        <MenuItem
-          :active="activePath === menu.to"
-          v-for="(menu, index) in memus"
-          :key="index"
-          :title="menu.title"
-          :icon="menu.icon"
-          :to="menu.to"
-        />
+        <div style="height:100%;position:relative">
+          <div v-show="hasActive" id="marker" ref="marker"></div>
+          <div class="cover"></div>
+          <MenuItem
+            @indicator="indicator"
+            @indicator-hover="indicatorHover"
+            :active="activePath === menu.to"
+            v-for="(menu, index) in memus"
+            :key="index"
+            :title="menu.title"
+            :icon="menu.icon"
+            :to="menu.to"
+          />
+        </div>
       </div>
     </div>
   </header>
@@ -31,6 +37,9 @@ export default {
     activePath() {
       const { path } = this.$route;
       return path;
+    },
+    hasActive() {
+      return this.memus.some(menu => this.activePath === menu.to);
     }
   },
   data: () => {
@@ -56,10 +65,26 @@ export default {
           to: "/about",
           icon: "iconfont icon-me"
         }
-      ]
+      ],
+      activeEl: null
     };
   },
-  methods: {}
+  methods: {
+    indicator(e) {
+      if (!e) e = this.activeEl;
+      if (e) {
+        this.activeEl = e;
+        this.$refs.marker.style.left = e.offsetLeft + "px";
+        this.$refs.marker.style.width = e.offsetWidth + "px";
+      } else {
+        this.$refs.marker.style.width = 0 + "px";
+      }
+    },
+    indicatorHover(e) {
+      this.$refs.marker.style.left = e.offsetLeft + "px";
+      this.$refs.marker.style.width = e.offsetWidth + "px";
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -76,7 +101,7 @@ export default {
   justify-content: space-between;
   height: 85px;
 
-  & .logo {
+  .logo {
     color: #333333;
     width: 200px;
     height: 100%;
@@ -93,14 +118,33 @@ export default {
       }
     }
   }
-  & .menus {
+  .menus {
     flex-grow: 1;
     display: flex;
     align-items: center;
     // justify-content: flex-end;
     justify-content: center;
   }
-  & .search {
+
+  #marker {
+    position: absolute;
+    bottom: 0px;
+    height: 4px;
+    // width: 100px;
+    background: #cccccc;
+    transition: 0.3s;
+    border-radius: 4px;
+  }
+  .cover {
+    position: absolute;
+    bottom: 0px;
+    // background: #x;
+    height: 4px;
+    height: 4px;
+    width: 100%;
+  }
+
+  .search {
     flex-shrink: 0;
     display: flex;
     align-items: center;
