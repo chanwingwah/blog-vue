@@ -1,13 +1,11 @@
 <template>
   <div class=" walking-item">
     <div class="walking-item-left">
-      <TimeBeauty></TimeBeauty>
+      <TimeBeauty :time="walking.createdAt"></TimeBeauty>
     </div>
     <div class="walking-item-right">
       <div class="walking-info">
-        刚刚开通了博客，快来我的博客踩一踩吧
-        刚刚开通了博客，快来我的博客踩一踩吧
-        刚刚开通了博客，快来我的博客踩一踩吧
+        {{ walking.contents }}
       </div>
       <!-- <div class="walking-footer">
         <div>
@@ -24,7 +22,8 @@ export default {
   name: "home",
   components: {
     TimeBeauty
-  }
+  },
+  props: ["walking"]
 };
 </script>
 <style lang="scss" scoped>
