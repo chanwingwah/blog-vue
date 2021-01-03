@@ -64,6 +64,9 @@ div:focus {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+#app {
+  height: 100%;
+}
 
 .wrap-outer {
   width: 100%;
@@ -80,4 +83,12 @@ div:focus {
 .shadow-1 {
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.05);
   border-radius: 2px;
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background: #ccc;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
 }

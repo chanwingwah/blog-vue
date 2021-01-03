@@ -19,13 +19,14 @@
       target="_blank"
     >
       <i class="iconfont icon-git"></i>
-      https://github.com/chanwingwah</a
-    >
-    <div class="slip"></div>
+      chanwingwah
+      <i class="iconfont icon-launch" style="font-size:12px"></i>
+    </a>
+    <div class="divider"></div>
     <div class="count-info">
       <div class="count-info-item">
         <div class="infoItem-count">
-          13
+          0
         </div>
         <div class="infoItem-text">
           博文
@@ -33,7 +34,7 @@
       </div>
       <div class="count-info-item">
         <div class="infoItem-count" style="font-size:34px">
-          13
+          0
         </div>
         <div class="infoItem-text">
           行博
@@ -41,14 +42,14 @@
       </div>
       <div class="count-info-item">
         <div class="infoItem-count">
-          13
+          0
         </div>
         <div class="infoItem-text">
           订阅数
         </div>
       </div>
     </div>
-    <div class="slip"></div>
+    <div class="divider"></div>
   </div>
 </template>
 <script>
@@ -91,14 +92,6 @@ export default {
   margin-bottom: 25px;
 }
 
-.slip {
-  height: 1px;
-  width: 100%;
-  background: #ccc;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.05);
-  border-radius: 50%;
-}
-
 .count-info {
   //   border-top: 1px solid #cccccc;
   //   border-bottom: 1px solid #cccccc;
@@ -116,6 +109,8 @@ export default {
 
   .infoItem-count {
     font-size: 28px;
+    height: 40px;
+    line-height: 40px;
     // font-weight: bold;
   }
 

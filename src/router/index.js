@@ -32,7 +32,13 @@ const routes = [
         path: "about",
         name: "about",
         component: () => import("@/views/about/index"),
-        meta: { title: "首页" }
+        meta: { title: "关于" }
+      },
+      {
+        path: "article",
+        name: "article",
+        component: () => import("@/views/blog/Article"),
+        meta: { title: "文章" }
       }
     ]
   },
@@ -42,10 +48,11 @@ const routes = [
     component: () => import("@/views/404")
   },
   // 404 page must be placed at the end !!!
-  { path: "*", redirect: "/404" } // 匹配不到任何路由 指向404
+  { path: "*", redirect: "/home" } // 匹配不到任何路由 指向404
 ];
 
 const router = new VueRouter({
+  mode: "history",
   routes
 });
 

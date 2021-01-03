@@ -1,12 +1,10 @@
 <template>
-  <section class="wrap-outer">
-    <div class="wrap-inner">
-      <transition name="fade-transform" mode="out-in">
-        <keep-alive>
-          <router-view :key="key" />
-        </keep-alive>
-      </transition>
-    </div>
+  <section class="app-mian">
+    <transition name="fade-transform" mode="out-in">
+      <!-- <keep-alive> -->
+      <router-view :key="key" />
+      <!-- </keep-alive> -->
+    </transition>
   </section>
 </template>
 
@@ -23,3 +21,9 @@ export default {
   }
 };
 </script>
+<style lang="scss" scoped>
+.app-mian {
+  width: 100%;
+  flex-grow: 1;
+}
+</style>
