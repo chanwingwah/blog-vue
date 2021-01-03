@@ -30,12 +30,17 @@ export default {
     return {
       scrollCb: null,
       menuList: [],
-      maxCount: 3
+      maxCount: 3,
+      timer: null
     };
+  },
+  beforeDestroy() {
+    clearInterval(this.timer);
   },
   computed: {},
   watch: {
     menuKey() {
+      this.menuKey;
       this.createMenu();
       this.reload();
     }
@@ -44,7 +49,7 @@ export default {
     this.scrollCb = this.deboundce(this.menuHighlight, 50);
     window.addEventListener("scroll", this.scrollCb);
   },
-  beforeDestroy() {
+  beforeDestroyed() {
     window.removeEventListener("scroll", this.scrollCb);
   },
   methods: {
@@ -52,9 +57,9 @@ export default {
       // 如果有图片的话，第一次获取dom节点的高度会不准确，那么，则需要重新load
       // 这里定时load3次，每次间隔1000ms
       let count = 1;
-      const timer = window.setInterval(() => {
+      this.timer = window.setInterval(() => {
         if (count > this.maxCount) {
-          clearInterval(timer);
+          clearInterval(this.timer);
         } else {
           count++;
           this.menuList = [];
@@ -73,6 +78,7 @@ export default {
       const options = {
         container: "body",
         easing: "ease",
+        offset: -50,
         onDone: function() {
           self.menuHighlight();
         },
