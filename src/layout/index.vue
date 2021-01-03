@@ -3,6 +3,7 @@
     <div class="main-container">
       <navbar />
       <app-main />
+      <back-to-top />
     </div>
   </div>
 </template>
@@ -10,12 +11,14 @@
 <script>
 import { Navbar, AppMain } from "./components";
 import ResizeMixin from "./mixin/ResizeHandler";
+import BackToTop from "@/components/BackToTop";
 
 export default {
   name: "Layout",
   components: {
     Navbar,
-    AppMain
+    AppMain,
+    BackToTop
   },
   mixins: [ResizeMixin]
 };
