@@ -4,9 +4,7 @@
       <div class="mybook-info">
         <h2 class="title">
           我的书单
-          <small>
-            (5)
-          </small>
+          <small> ({{ booklist.length }}) </small>
         </h2>
         <p class="summary">
           目前看过的一些书，或是未读完的。
@@ -15,17 +13,12 @@
         </p>
       </div>
       <div class="book-content">
-        <div class="book-content-item">
-          <BookItem></BookItem>
-        </div>
-        <div class="book-content-item">
-          <BookItem></BookItem>
-        </div>
-        <div class="book-content-item">
-          <BookItem></BookItem>
-        </div>
-        <div class="book-content-item">
-          <BookItem></BookItem>
+        <div
+          class="book-content-item"
+          v-for="(book, index) in booklist"
+          :key="index"
+        >
+          <BookItem :book="book"></BookItem>
         </div>
       </div>
     </div>
@@ -33,11 +26,22 @@
 </template>
 
 <script>
+import { getList } from "@/api/book";
 import BookItem from "@/views/book/BookItem";
 export default {
   name: "book",
   components: {
     BookItem
+  },
+  created() {
+    getList().then(res => {
+      this.booklist = res.data.data;
+    });
+  },
+  data() {
+    return {
+      booklist: []
+    };
   }
 };
 </script>

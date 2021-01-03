@@ -1,18 +1,14 @@
 <template>
   <div class="book-item">
     <div class="divider"></div>
-    <img
-      class="picture"
-      src="http://www.yangzicong.com/book/1471327171896.jpeg"
-      alt=""
-    />
+    <img class="picture" :src="urlPrefix + book.photo" alt="" />
     <h3 class="title">
-      JavaScript高级程序设计（第3版）
+      {{ book.name }}
     </h3>
-    <div class="author">Nicholas C. Zakas</div>
-    <div class="recommend">推荐指数: xxx</div>
-    <div class="decription">
-      描述
+    <div class="author">{{ book.author }}</div>
+    <div class="recommend">推荐指数: {{ book.recommendation }}</div>
+    <div class="description">
+      {{ book.description }}
     </div>
     <div class="divider"></div>
   </div>
@@ -21,7 +17,20 @@
 <script>
 export default {
   name: "BookItem",
-  components: {}
+  components: {},
+  props: {
+    book: {
+      type: Object,
+      default() {
+        return {};
+      }
+    }
+  },
+  data() {
+    return {
+      urlPrefix: "http://qmd6awdkv.hn-bkt.clouddn.com/"
+    };
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -55,7 +64,7 @@ export default {
     width: 100%;
     color: #999999;
   }
-  .decription {
+  .description {
     line-height: 1.6em;
     width: 100%;
     padding-bottom: 20px;
