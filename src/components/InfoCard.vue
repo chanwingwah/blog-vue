@@ -22,11 +22,11 @@
       chanwingwah
       <i class="iconfont icon-launch" style="font-size:12px"></i>
     </a>
-    <div class="divider"></div>
+    <Divider></Divider>
     <div class="count-info">
       <div class="count-info-item">
         <div class="infoItem-count">
-          0
+          {{ counts.blogNum }}
         </div>
         <div class="infoItem-text">
           博文
@@ -34,7 +34,7 @@
       </div>
       <div class="count-info-item">
         <div class="infoItem-count" style="font-size:34px">
-          0
+          {{ counts.walkingNum }}
         </div>
         <div class="infoItem-text">
           行博
@@ -42,21 +42,33 @@
       </div>
       <div class="count-info-item">
         <div class="infoItem-count">
-          0
+          {{ counts.subscribeNum }}
         </div>
         <div class="infoItem-text">
           订阅数
         </div>
       </div>
     </div>
-    <div class="divider"></div>
+    <divider></divider>
   </div>
 </template>
 <script>
+import { getCounts } from "@/api/index";
 export default {
   name: "infoCard",
   data() {
-    return {};
+    return {
+      counts: {
+        blogNum: 0,
+        walkingNum: 0,
+        subscribeNum: 0
+      }
+    };
+  },
+  created() {
+    getCounts().then(res => {
+      this.counts = res.data.data;
+    });
   }
 };
 </script>

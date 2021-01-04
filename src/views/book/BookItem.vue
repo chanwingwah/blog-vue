@@ -1,6 +1,6 @@
 <template>
   <div class="book-item">
-    <div class="divider"></div>
+    <divider></divider>
     <img class="picture" :src="urlPrefix + book.photo" alt="" />
     <h3 class="title">
       {{ book.name }}
@@ -10,7 +10,7 @@
     <div class="description">
       {{ book.description }}
     </div>
-    <div class="divider"></div>
+    <divider></divider>
   </div>
 </template>
 

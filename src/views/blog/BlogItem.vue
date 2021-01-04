@@ -1,53 +1,46 @@
 <template>
   <div class="shadow-1 blog-item">
     <h2 class="blog-title">
-      <router-link class="blog-title-link" title="关于我" to="/article">
-        Web 缓存
+      <router-link class="blog-title-link" :to="`/article/${blog._id}`">
+        {{ blog.title }}
       </router-link>
     </h2>
     <div class="blog-info">
       <div class="item-span">
         <i class="item-icon iconfont icon-time"></i>
-        <span class="item-text">2019-09-15</span>
+        <span class="item-text">{{ blog.createdAt | formatTime }}</span>
       </div>
       <div class="item-span">
         <i class="item-icon iconfont icon-update"></i>
-        <span>2019-09-15</span>
+        <span>{{ blog.updatedAt | formatTime }}</span>
       </div>
       <div class="item-span">
         <i class="item-icon iconfont icon-finder"></i>
-        <span class="item-text">前端</span>
+        <span class="item-text">{{ blog.category }}</span>
       </div>
     </div>
     <div class="blog-summary">
-      在弱类型语言 JavaScript
-      中，变量上能有多少优化窍门？你深入中，变量上能有多少优化窍门？本文从最基础的变量类型说起，带你深入中，变量上能有多少优化窍门？本文从最基础的变量类型说起，带你深入
-      V8
-      底层类型变换与优化机制。真正的老司机，一行代码可见一斑。以后你可以说，我写的代码，连变量声明都比你快…
-      <router-link class="read-more" title="关于我" to="/about">
+      {{ blog.summary }}
+      <router-link class="read-more" :to="`/article/${blog._id}`">
         阅读全文
       </router-link>
     </div>
     <div class="blog-bottom">
       <div class="item-span blog-bottom-left">
-        <i class="item-icon iconfont icon-label"></i>
-        <div>
-          <span class="blog-label">标签1</span>
-          <span class="blog-label">标签2</span>
-        </div>
+        <Tags :tagNames="blog.tagNames"></Tags>
       </div>
       <div class="blog-bottom-right">
         <div class="item-span">
           <i class="item-icon iconfont icon-view"></i>
-          <span class="item-text">(803)</span>
+          <span class="item-text">({{ blog.viewCount }})</span>
         </div>
         <div class="item-span">
           <i class="item-icon iconfont icon-comment"></i>
-          <span class="item-text">(803)</span>
+          <span class="item-text">({{ blog.commentCount }})</span>
         </div>
         <div class="item-span" style="margin-right:0">
           <i class="item-icon iconfont icon-like"></i>
-          <span class="item-text">(803)</span>
+          <span class="item-text">({{ blog.likeCount }})</span>
         </div>
       </div>
     </div>
@@ -55,9 +48,13 @@
 </template>
 
 <script>
+import Tags from "@/views/blog/Tags";
 export default {
   name: "BlogItem",
-  components: {}
+  components: {
+    Tags
+  },
+  props: ["blog"]
 };
 </script>
 <style lang="scss" scoped>
@@ -120,14 +117,6 @@ export default {
       flex-shrink: 0;
       display: flex;
     }
-  }
-
-  .blog-label {
-    // color: #666666;
-    border: 1px solid #cccccc;
-    padding: 2px 5px;
-    margin: 0 5px;
-    border-radius: 4px;
   }
 }
 </style>

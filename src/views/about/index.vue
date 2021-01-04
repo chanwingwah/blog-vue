@@ -49,11 +49,11 @@
             </h3>
             <div class="work-details">
               <WorkExperience></WorkExperience>
-              <div class="divider"></div>
+              <divider></divider>
             </div>
             <div class="work-details">
               <WorkExperience></WorkExperience>
-              <div class="divider"></div>
+              <divider></divider>
             </div>
           </div>
         </div>

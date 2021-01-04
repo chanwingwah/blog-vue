@@ -6,9 +6,11 @@
           <InfoCard></InfoCard>
         </div>
         <div style="margin-left:20px;flex-grow:1">
-          <BlogItem></BlogItem>
-          <BlogItem></BlogItem>
-          <BlogItem></BlogItem>
+          <BlogItem
+            v-for="blog in blogList"
+            :key="blog._id"
+            :blog="blog"
+          ></BlogItem>
         </div>
       </div>
     </div>
@@ -18,11 +20,22 @@
 <script>
 import { InfoCard } from "@/components";
 import BlogItem from "@/views/blog/BlogItem";
+import { getList } from "@/api/blog";
 export default {
   name: "home",
   components: {
     InfoCard,
     BlogItem
+  },
+  data() {
+    return {
+      blogList: []
+    };
+  },
+  created() {
+    getList().then(res => {
+      this.blogList = res.data.data;
+    });
   }
 };
 </script>

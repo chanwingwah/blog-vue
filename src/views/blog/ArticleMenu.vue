@@ -84,7 +84,7 @@ export default {
         },
         y: true
       };
-      VueScrollTo.scrollTo(ele, 800, options);
+      VueScrollTo.scrollTo(ele, 500, options);
     },
     // 防抖
     deboundce(fn, delay) {
@@ -192,6 +192,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
+ul,
+ol {
+  list-style: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+}
 .menu {
   // position: fixed;
   // margin-top: 20px;

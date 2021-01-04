@@ -16,16 +16,31 @@
       </div>
     </div>
     <div style="padding:20px;background:#fff">
-      <WalkingItem></WalkingItem>
-      <div class="divider"></div>
-      <WalkingItem></WalkingItem>
+      <div v-for="walking in walkingList" :key="walking._id">
+        <WalkingItem :walking="walking"></WalkingItem>
+        <divider></divider>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { getList } from "@/api/walking";
 import WalkingItem from "@/views/walking/compnents/WalkingItem";
-export default { name: "walkinng", components: { WalkingItem } };
+export default {
+  name: "walkinng",
+  components: { WalkingItem },
+  data() {
+    return {
+      walkingList: []
+    };
+  },
+  created() {
+    getList().then(res => {
+      this.walkingList = res.data.data;
+    });
+  }
+};
 </script>
 <style lang="scss" scoped>
 .walking-bg {

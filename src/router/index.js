@@ -35,7 +35,7 @@ const routes = [
         meta: { title: "关于" }
       },
       {
-        path: "article",
+        path: "article/:id",
         name: "article",
         component: () => import("@/views/blog/Article"),
         meta: { title: "文章" }
