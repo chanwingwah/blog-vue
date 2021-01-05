@@ -10,7 +10,7 @@
             ></article-menu>
           </transition>
           <div class="article-box">
-            <div class="article-text">
+            <div class="shadow-1 article-text ">
               <h1 class="title">
                 {{ article.title }}
               </h1>
@@ -48,6 +48,9 @@
                 <Like :article="article"></Like>
               </div>
             </div>
+            <div class="shadow-1 article-comment">
+              <Comment :article="article"></Comment>
+            </div>
           </div>
         </template>
       </div>
@@ -63,6 +66,7 @@ import { Markdown } from "@/components";
 import ArticleMenu from "@/views/blog/ArticleMenu";
 import ToTop from "@/mixin/ToTop";
 import Like from "@/views/blog/Like";
+import Comment from "@/views/blog/Comment/index";
 
 import { getDetail } from "@/api/blog";
 import store from "@/store";
@@ -75,7 +79,8 @@ export default {
     ArticleMenu,
     BackToTop,
     Tags,
-    Like
+    Like,
+    Comment
   },
   mixins: [ToTop],
   computed: {
@@ -199,5 +204,11 @@ export default {
 
 .item-icon {
   margin-right: 8px;
+}
+
+.article-comment {
+  padding: 20px;
+  margin-top: 40px;
+  background: #ffffff;
 }
 </style>
