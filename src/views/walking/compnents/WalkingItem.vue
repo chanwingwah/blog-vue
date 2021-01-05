@@ -4,6 +4,21 @@
       <TimeBeauty :time="walking.createdAt"></TimeBeauty>
     </div>
     <div class="walking-item-right">
+      <div v-if="walking.images.length">
+        <viewer :images="walking.images" class="images-box">
+          <div
+            class="image-item"
+            :class="imageClase"
+            v-for="(image, index) in walking.images"
+            :key="index"
+          >
+            <img
+              :src="image"
+              :alt="walking.contents + `(${index}/${walking.images.length})`"
+            />
+          </div>
+        </viewer>
+      </div>
       <div class="walking-info">
         {{ walking.contents }}
       </div>
@@ -16,7 +31,11 @@
 </template>
 
 <script>
+import "viewerjs/dist/viewer.css";
+import Viewer from "v-viewer";
 import TimeBeauty from "@/views/walking/compnents/TimeBeauty";
+import Vue from "vue";
+Vue.use(Viewer);
 import Like from "@/views/walking/compnents/Like";
 export default {
   name: "home",
@@ -24,7 +43,21 @@ export default {
     TimeBeauty,
     Like
   },
-  props: ["walking"]
+  props: ["walking"],
+  computed: {
+    imageClase() {
+      if (this.walking.images.length <= 1) {
+        return "image1";
+      }
+      if (this.walking.images.length == 2) {
+        return "image2";
+      }
+      if (this.walking.images.length >= 3) {
+        return "image3";
+      }
+      return undefined;
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -60,5 +93,44 @@ export default {
     color: #cccccc;
     line-height: 1.6em;
   }
+}
+
+.images-box {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.image-item {
+  padding: 10px;
+  border: 1px solid #f0f0f0;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.image-item img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.image1 {
+  width: 300px;
+  max-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image2 {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image3 {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
