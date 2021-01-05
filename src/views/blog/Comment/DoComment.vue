@@ -128,6 +128,7 @@ export default {
   },
   methods: {
     addComment() {
+      debugger;
       // 判断是否存储个人信息
       if (this.keepInfo) {
         localStorage.setItem(
@@ -147,6 +148,7 @@ export default {
 
       let quote = this.quote ? this.quote : undefined;
       let quoteId = quote ? quote._id : undefined;
+      //   const loading = this.$message.loading("评论发表中", 0);
       addComment(
         Object.assign(
           {
@@ -161,7 +163,8 @@ export default {
       ).then(() => {
         this.$emit("update");
         this.formData.comment = null;
-        alert("评论成功");
+        this.$message.success("评论发表成功");
+        // loading();
       });
     },
     checkForm() {
@@ -195,7 +198,7 @@ export default {
         return false;
       }
       if (!this.formData.website) {
-        return;
+        return true;
       }
       let re2 = /^((https|http|ftp|rtsp|mms){0,1}(:\/\/){0,1})(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])+$/;
 

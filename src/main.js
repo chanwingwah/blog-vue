@@ -15,6 +15,8 @@ Object.keys(filters).forEach(key => {
 });
 Vue.config.productionTip = false;
 Vue.component("Divider", Divider);
+import { message } from "ant-design-vue";
+Vue.prototype.$message = message;
 
 new Vue({
   router,

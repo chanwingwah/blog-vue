@@ -113,6 +113,7 @@ export default {
 
 .content {
   white-space: pre-wrap;
+  word-break: break-all;
   font-size: 15px;
   color: #333333;
 }
@@ -133,6 +134,7 @@ export default {
     max-height: 100px;
     overflow: auto;
     white-space: pre-wrap;
+    word-break: break-all;
     color: #333333;
   }
 }
