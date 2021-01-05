@@ -14,7 +14,6 @@ Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key]);
 });
 Vue.config.productionTip = false;
-debugger;
 Vue.component("Divider", Divider);
 
 new Vue({

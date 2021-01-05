@@ -13,3 +13,25 @@ export function getDetail(params) {
     params
   });
 }
+
+export function addBlogLike(data) {
+  return request({
+    url: "/api/blog/addLike",
+    method: "post",
+    data
+  });
+}
+export function cancelBlogLike(data) {
+  return request({
+    url: "/api/blog/cancelLike",
+    method: "post",
+    data
+  });
+}
+export function addViewCount(data) {
+  return request({
+    url: "/api/blog/addViewCount",
+    method: "post",
+    data
+  });
+}

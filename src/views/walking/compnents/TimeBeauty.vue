@@ -19,9 +19,6 @@ export default {
       type: [String, Object]
     }
   },
-  propsData: {
-    time: new Date()
-  },
   computed: {
     year() {
       return moment(this.time).format("YYYY");

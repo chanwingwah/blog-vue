@@ -6,3 +6,18 @@ export function getList(params) {
     params
   });
 }
+
+export function addWalkingLike(data) {
+  return request({
+    url: "/api/walking/addLike",
+    method: "post",
+    data
+  });
+}
+export function cancelWalkingLike(data) {
+  return request({
+    url: "/api/walking/cancelLike",
+    method: "post",
+    data
+  });
+}

@@ -1,5 +1,5 @@
 <template>
-  <div style="width:1000px;margin: 20px auto">
+  <div style="width:850px;margin: 20px auto">
     <div class="walking-bg">
       <a
         class="pic-source"

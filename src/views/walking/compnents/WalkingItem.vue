@@ -7,21 +7,22 @@
       <div class="walking-info">
         {{ walking.contents }}
       </div>
-      <!-- <div class="walking-footer">
-        <div>
-          点赞   信息 
-        </div>
-      </div> -->
+      <div class="walking-footer">
+        <Like :walking="walking"></Like>
+        <div class="likeCount">({{ walking.likeCount }})</div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import TimeBeauty from "@/views/walking/compnents/TimeBeauty";
+import Like from "@/views/walking/compnents/Like";
 export default {
   name: "home",
   components: {
-    TimeBeauty
+    TimeBeauty,
+    Like
   },
   props: ["walking"]
 };
@@ -43,6 +44,21 @@ export default {
   color: #666666;
   font-size: 15px;
   padding-right: 20px;
-  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // padding-top: 10px;
+}
+
+.walking-footer {
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .likeCount {
+    font-size: 12px;
+    color: #cccccc;
+    line-height: 1.6em;
+  }
 }
 </style>

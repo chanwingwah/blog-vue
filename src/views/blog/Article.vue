@@ -42,19 +42,12 @@
               <div>
                 <br />
                 <br />
-                <divider></divider>
+                <!-- <divider></divider> -->
                 <br />
                 <Tags :tagNames="article.tagNames"></Tags>
+                <Like :article="article"></Like>
               </div>
             </div>
-            <!-- <div class="operate">
-              <div class="operate-item like">
-                点赞
-              </div>
-              <div class="operate-item share">
-                分享
-              </div>
-            </div> -->
           </div>
         </template>
       </div>
@@ -69,8 +62,11 @@ import BackToTop from "@/components/BackToTop";
 import { Markdown } from "@/components";
 import ArticleMenu from "@/views/blog/ArticleMenu";
 import ToTop from "@/mixin/ToTop";
+import Like from "@/views/blog/Like";
 
 import { getDetail } from "@/api/blog";
+import store from "@/store";
+import { mapGetters } from "vuex";
 
 export default {
   name: "Article",
@@ -78,14 +74,19 @@ export default {
     Markdown,
     ArticleMenu,
     BackToTop,
-    Tags
+    Tags,
+    Like
   },
   mixins: [ToTop],
+  computed: {
+    ...mapGetters(["readedArticles"])
+  },
   data() {
     return {
       article: null,
       menuKey: 1,
-      contents: ""
+      contents: "",
+      id: null
     };
   },
   beforeDestroy() {
@@ -93,6 +94,7 @@ export default {
     // 更新标签标题
     document.title = "陈永华的博客";
   },
+  mounted() {},
   methods: {
     rendered() {
       setTimeout(() => {
@@ -104,11 +106,18 @@ export default {
     }
   },
   created() {
-    var id = this.$route.params.id;
-    getDetail({ id }).then(res => {
+    this.id = this.$route.params.id;
+    getDetail({ id: this.id }).then(res => {
       this.article = res.data.data;
       this.setMetaDescription(this.article.summary);
       document.title = this.article.title;
+
+      // 增加阅读量
+      if (!this.readedArticles.includes(this.id)) {
+        store.dispatch("tourist/addArticleView", this.id).then(res => {
+          this.article.viewCount = res.data.data.viewCount;
+        });
+      }
     });
   }
 };
