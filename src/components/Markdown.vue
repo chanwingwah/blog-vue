@@ -37,6 +37,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import "@/styles/markdown.scss";
 .md-anchor {
   color: #999;
   font-size: 16px;
