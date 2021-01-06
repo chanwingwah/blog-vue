@@ -2,6 +2,10 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+import Highlight from "vue-markdown-highlight";
+import "highlight.js/scss/monokai-sublime.scss";
+Vue.use(Highlight);
+
 import "@/styles/index.scss"; // global css
 
 import VueScrollTo from "vue-scrollto";

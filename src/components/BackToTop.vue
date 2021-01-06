@@ -1,7 +1,8 @@
 <template>
   <transition name="to-top">
     <div class="to-top" @click="backToTop" v-show="isShow">
-      <div class="to-top-angel"></div>
+      <i class="iconfont icon-top"></i>
+      <!-- <div class="to-top-angel"></div> -->
     </div>
   </transition>
 </template>
@@ -76,11 +77,14 @@ export default {
   bottom: 50px;
   border-radius: 4px;
   padding: 10px 0; //增加热区
-
   // height: 40px;
   // background-color: rgba($color: #000000, $alpha: 0.7);
   transition: all ease 0.5s;
   z-index: 20;
+  .iconfont {
+    font-size: 40px;
+  }
+
   .to-top-angel {
     cursor: pointer;
     height: 0;

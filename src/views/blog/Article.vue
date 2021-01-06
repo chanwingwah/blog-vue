@@ -34,11 +34,16 @@
                   <span class="item-text">({{ article.viewCount }})</span>
                 </div>
               </div>
-
-              <Markdown
-                :source="article.markdown.replace(/↵/gm, '\r')"
-                @rendered="rendered"
-              ></Markdown>
+              <div v-if="article.HTML">
+                <div v-html="article.HTML"></div>
+              </div>
+              <div v-else>
+                <Markdown
+                  v-highlight
+                  :source="article.markdown.replace(/↵/gm, '\r')"
+                  @rendered="rendered"
+                ></Markdown>
+              </div>
               <div>
                 <br />
                 <br />
@@ -90,7 +95,6 @@ export default {
     return {
       article: null,
       menuKey: 1,
-      contents: "",
       id: null
     };
   },
@@ -116,6 +120,11 @@ export default {
       this.article = res.data.data;
       this.setMetaDescription(this.article.summary);
       document.title = this.article.title;
+      if (this.article.HTML) {
+        this.$nextTick(() => {
+          return this.menuKey++;
+        });
+      }
 
       // 增加阅读量
       if (!this.readedArticles.includes(this.id)) {
