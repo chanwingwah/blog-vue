@@ -47,6 +47,11 @@ const routes = [
     path: "/404",
     component: () => import("@/views/404")
   },
+  {
+    // 404 page must be placed at the end !!!
+    path: "/login",
+    component: () => import("@/views/admin/login")
+  },
   // 404 page must be placed at the end !!!
   { path: "*", redirect: "/home" } // 匹配不到任何路由 指向404
 ];
