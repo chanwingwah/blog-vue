@@ -1,4 +1,6 @@
 import axios from "axios";
+import { message } from "ant-design-vue";
+
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API // url = base url + request url
 });
@@ -10,6 +12,7 @@ service.interceptors.request.use(
   },
   error => {
     // do something with request error
+    message.error(error.toString());
     return Promise.reject(error);
   }
 );
@@ -20,11 +23,13 @@ service.interceptors.response.use(
       return Promise.resolve(response);
     } else {
       //  处理 由后端抛出的错误
+      message.error(JSON.stringify(response.data));
       return Promise.reject(response);
     }
   },
   async error => {
     //  由网络或者服务器抛出的错误
+    message.error(error.toString());
     return Promise.reject(error);
   }
 );
