@@ -102,6 +102,10 @@ export default {
   font-size: 14px;
   color: #666666;
   margin-bottom: 25px;
+  &:hover {
+    color: #cccccc;
+    cursor: pointer;
+  }
 }
 
 .count-info {

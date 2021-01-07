@@ -20,6 +20,12 @@
         >
           <BookItem :book="book" @reload="reload"></BookItem>
         </div>
+        <AdminTools
+          v-if="booklist.length === 0"
+          module="book"
+          :show="['add']"
+          @update="reload"
+        ></AdminTools>
       </div>
     </div>
   </section>

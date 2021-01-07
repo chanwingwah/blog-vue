@@ -20,6 +20,12 @@
         <WalkingItem :walking="walking" @reload="reload"></WalkingItem>
         <divider></divider>
       </div>
+      <AdminTools
+        v-if="walkingList.length === 0"
+        module="walking"
+        :show="['add']"
+        @update="reload"
+      ></AdminTools>
     </div>
   </div>
 </template>

@@ -12,6 +12,12 @@
             :blog="blog"
             @delete="reload"
           ></BlogItem>
+          <AdminTools
+            v-if="blogList.length === 0"
+            module="blog"
+            :show="['add']"
+            @update="reload"
+          ></AdminTools>
         </div>
       </div>
     </div>

@@ -20,3 +20,26 @@ export function logout() {
     method: "get"
   });
 }
+export function getList() {
+  return request({
+    url: "/api/user/list",
+    method: "get"
+  });
+}
+export function add(data) {
+  return request({
+    url: "/api/user/new",
+    method: "post",
+    data
+  });
+}
+export function update(id, data) {
+  return request({
+    url: "/api/user/update",
+    method: "post",
+    data,
+    params: {
+      id
+    }
+  });
+}

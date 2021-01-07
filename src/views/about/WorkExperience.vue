@@ -19,14 +19,14 @@ export default {
   name: "WorkExperience",
   props: {
     experience: {
-      type: Object,
-      default() {
-        return {
-          time: "2021年1月",
-          title: "入读广东工业大学",
-          detail: "大学城校区 计算机学院"
-        };
-      }
+      type: Object
+      // default() {
+      //   return {
+      //     time: "2021年1月",
+      //     title: "入读广东工业大学",
+      //     detail: "大学城校区 计算机学院"
+      //   };
+      // }
     }
   }
 };
