@@ -1,11 +1,16 @@
 ("use strict");
+const webpack = require("webpack");
+
 // If your port is set to 80,
 // use administrator privileges to execute the command line.
 // For example, Mac: sudo npm run
 // You can change the port by the following method:
 // port = 9527 npm run dev OR npm run dev --port = 9527
+const path = require("path");
 const port = process.env.port || process.env.npm_config_port || 9527; // dev port
-
+function resolve(dir) {
+  return path.join(__dirname, dir);
+}
 // All configuration item explanations can be find in https://cli.vuejs.org/config/
 module.exports = {
   /**
@@ -40,8 +45,20 @@ module.exports = {
   },
   chainWebpack: config => {
     config.plugin("html").tap(args => {
-      args[0].title = "陈永华的个人博客";
+      args[0].title = "陈永华的博客";
       return args;
     });
+  },
+  configureWebpack: {
+    plugins: [
+      new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /zh-cn/)
+    ],
+    // provide the app's title in webpack's name field, so that
+    // it can be accessed in index.html to inject the correct title.
+    resolve: {
+      alias: {
+        "@ant-design/icons/lib/dist$": resolve("src/utils/antdIcon.js")
+      }
+    }
   }
 };

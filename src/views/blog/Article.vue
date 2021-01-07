@@ -37,13 +37,6 @@
               <div v-if="article.HTML">
                 <div v-html="article.HTML"></div>
               </div>
-              <div v-else>
-                <Markdown
-                  v-highlight
-                  :source="article.markdown.replace(/↵/gm, '\r')"
-                  @rendered="rendered"
-                ></Markdown>
-              </div>
               <div>
                 <br />
                 <br />
@@ -67,7 +60,6 @@
 <script>
 import Tags from "@/views/blog/Tags";
 import BackToTop from "@/components/BackToTop";
-import { Markdown } from "@/components";
 import ArticleMenu from "@/views/blog/ArticleMenu";
 import ToTop from "@/mixin/ToTop";
 import Like from "@/views/blog/Like";
@@ -76,11 +68,11 @@ import Comment from "@/views/blog/Comment/index";
 import { getDetail } from "@/api/blog";
 import store from "@/store";
 import { mapGetters } from "vuex";
+import "highlight.js/scss/monokai-sublime.scss";
 
 export default {
   name: "Article",
   components: {
-    Markdown,
     ArticleMenu,
     BackToTop,
     Tags,
@@ -136,6 +128,9 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+@import "@/styles/markdown.scss";
+</style>
 <style lang="scss" scoped>
 .article-content {
   // display: flex;
