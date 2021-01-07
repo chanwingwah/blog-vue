@@ -10,6 +10,7 @@
             v-for="blog in blogList"
             :key="blog._id"
             :blog="blog"
+            @delete="reload"
           ></BlogItem>
         </div>
       </div>
@@ -33,9 +34,14 @@ export default {
     };
   },
   created() {
-    getList().then(res => {
-      this.blogList = res.data.data;
-    });
+    this.reload();
+  },
+  methods: {
+    reload() {
+      getList().then(res => {
+        this.blogList = res.data.data;
+      });
+    }
   }
 };
 </script>

@@ -33,6 +33,13 @@
       <div class="content">
         {{ comment.comment }}
       </div>
+      <AdminTools
+        module="comment"
+        :show="['del']"
+        :id="comment._id"
+        :target="comment"
+        @delete="$emit('delete')"
+      ></AdminTools>
     </div>
   </div>
 </template>
@@ -43,7 +50,7 @@ export default {
   props: ["comment", "index"],
   computed: {
     avator() {
-      return this.comment.nickname.slice(0, 1);
+      return ""; //this.comment.nickname.slice(0, 1);
     }
   },
   data() {

@@ -1,9 +1,24 @@
 <template>
   <div class="adminTools" v-if="this.login">
     <a-space>
-      <a-button type="primary" @click="add" size="small" ghost>新增</a-button>
-      <a-button type="primary" @click="edit" size="small" ghost>编辑</a-button>
+      <a-button
+        v-if="show.includes('add')"
+        type="primary"
+        @click="add"
+        size="small"
+        ghost
+        >新增</a-button
+      >
+      <a-button
+        v-if="show.includes('edit')"
+        type="primary"
+        @click="edit"
+        size="small"
+        ghost
+        >编辑</a-button
+      >
       <a-popconfirm
+        v-if="show.includes('del')"
         placement="bottom"
         ok-text="Yes"
         cancel-text="No"
@@ -25,13 +40,15 @@
 //  管理员工具箱s
 import { mapGetters } from "vuex";
 import { update as blogUpdate } from "@/api/blog";
+import { delComment } from "@/api/comment";
+
 export default {
   name: "adminTools",
   components: {},
   computed: {
     ...mapGetters(["login", "mode"])
   },
-  props: ["module", "id"], // 模块，操作，id
+  props: ["module", "id", "show", "target"], // 模块，操作，id
   data() {
     return {
       deleting: false
@@ -45,7 +62,15 @@ export default {
             this.$message.success("删除成功");
             this.$emit("delete");
           });
-
+          break;
+        }
+        case "comment": {
+          delComment({ id: this.id, articleId: this.target.articleId }).then(
+            () => {
+              this.$message.success("删除成功");
+              this.$emit("delete");
+            }
+          );
           break;
         }
         default: {

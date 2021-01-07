@@ -10,6 +10,7 @@
         :comment="comment"
         :index="commentList.length - index"
         @quote="getQuote"
+        @delete="load"
       ></CommentItem>
     </div>
     <div id="doComment">

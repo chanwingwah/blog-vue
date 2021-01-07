@@ -13,3 +13,10 @@ export function addComment(data) {
     data
   });
 }
+export function delComment(data) {
+  return request({
+    url: "/api/comment/del",
+    method: "post",
+    data
+  });
+}
