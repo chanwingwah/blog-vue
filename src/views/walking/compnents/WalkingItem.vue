@@ -26,6 +26,13 @@
         <Like :walking="walking"></Like>
         <div class="likeCount">({{ walking.likeCount }})</div>
       </div>
+      <AdminTools
+        module="walking"
+        :id="walking._id"
+        :target="walking"
+        @delete="$emit('reload')"
+        @update="$emit('reload')"
+      ></AdminTools>
     </div>
   </div>
 </template>
@@ -44,6 +51,11 @@ export default {
     Like
   },
   props: ["walking"],
+  data() {
+    return {
+      editing: false
+    };
+  },
   computed: {
     imageClase() {
       if (this.walking.images.length <= 1) {

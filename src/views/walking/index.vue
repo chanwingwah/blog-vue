@@ -17,7 +17,7 @@
     </div>
     <div style="padding:20px;background:#fff">
       <div v-for="walking in walkingList" :key="walking._id">
-        <WalkingItem :walking="walking"></WalkingItem>
+        <WalkingItem :walking="walking" @reload="reload"></WalkingItem>
         <divider></divider>
       </div>
     </div>
@@ -36,9 +36,14 @@ export default {
     };
   },
   created() {
-    getList().then(res => {
-      this.walkingList = res.data.data;
-    });
+    this.reload();
+  },
+  methods: {
+    reload() {
+      getList().then(res => {
+        this.walkingList = res.data.data;
+      });
+    }
   }
 };
 </script>

@@ -1,52 +1,65 @@
 <template>
-  <div class="adminTools" v-if="this.login">
-    <a-space>
-      <a-button
-        v-if="show.includes('add')"
-        type="primary"
-        @click="add"
-        size="small"
-        ghost
-        >新增</a-button
-      >
-      <a-button
-        v-if="show.includes('edit')"
-        type="primary"
-        @click="edit"
-        size="small"
-        ghost
-        >编辑</a-button
-      >
-      <a-popconfirm
-        v-if="show.includes('del')"
-        placement="bottom"
-        ok-text="Yes"
-        cancel-text="No"
-        @confirm="del"
-      >
-        <template slot="title">
-          <p>确定要删除吗 ？</p>
-          <!-- <p>{{ text }}</p> -->
-        </template>
-        <a-button type="danger" :loading="deleting" size="small" ghost>
-          删除
-        </a-button>
-      </a-popconfirm>
-    </a-space>
+  <div>
+    <div class="adminTools" v-if="this.login">
+      <a-space>
+        <a-button
+          v-if="show.includes('add')"
+          type="primary"
+          @click="add"
+          size="small"
+          ghost
+          >新增</a-button
+        >
+        <a-button
+          v-if="show.includes('edit')"
+          type="primary"
+          @click="edit"
+          size="small"
+          ghost
+          >编辑</a-button
+        >
+        <a-popconfirm
+          v-if="show.includes('del')"
+          placement="bottom"
+          ok-text="Yes"
+          cancel-text="No"
+          @confirm="del"
+        >
+          <template slot="title">
+            <p>确定要删除吗 ？</p>
+            <!-- <p>{{ text }}</p> -->
+          </template>
+          <a-button type="danger" :loading="deleting" size="small" ghost>
+            删除
+          </a-button>
+        </a-popconfirm>
+      </a-space>
+    </div>
+    <walkingEdit
+      :visible.sync="walkingEditing"
+      :target="target"
+      :mode="mode"
+      @update="$emit('update')"
+    ></walkingEdit>
   </div>
 </template>
 
 <script>
 //  管理员工具箱s
+import walkingEdit from "@/views/walking/Edit";
+
 import { mapGetters } from "vuex";
 import { update as blogUpdate } from "@/api/blog";
 import { delComment } from "@/api/comment";
+import { update as updateWalking } from "@/api/walking";
 
 export default {
   name: "adminTools",
-  components: {},
+  components: {
+    walkingEdit
+  },
   computed: {
-    ...mapGetters(["login", "mode"])
+    ...mapGetters(["login"])
   },
   props: {
     module: String,
@@ -60,7 +73,9 @@ export default {
   }, // 模块，操作，id
   data() {
     return {
-      deleting: false
+      deleting: false,
+      walkingEditing: false,
+      mode: ""
     };
   },
   methods: {
@@ -82,6 +97,13 @@ export default {
           );
           break;
         }
+        case "walking": {
+          updateWalking(this.id, { status: -1 }).then(() => {
+            this.$message.success("删除成功");
+            this.$emit("delete");
+          });
+          break;
+        }
         default: {
           this.$message.info("该功能未完善");
           break;
@@ -89,9 +111,14 @@ export default {
       }
     },
     add() {
+      this.mode = "add";
       switch (this.module) {
         case "blog": {
           this.blogEdit();
+          break;
+        }
+        case "walking": {
+          this.walkingEditing = true;
           break;
         }
         default: {
@@ -101,9 +128,14 @@ export default {
       }
     },
     edit() {
+      this.mode = "edit";
       switch (this.module) {
         case "blog": {
           this.blogEdit(this.id);
+          break;
+        }
+        case "walking": {
+          this.walkingEditing = true;
           break;
         }
         default: {

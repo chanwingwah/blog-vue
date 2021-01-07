@@ -7,6 +7,24 @@ export function getList(params) {
   });
 }
 
+export function add(data) {
+  return request({
+    url: "/api/walking/new",
+    method: "post",
+    data
+  });
+}
+export function update(id, data) {
+  return request({
+    url: "/api/walking/update",
+    method: "post",
+    data,
+    params: {
+      id
+    }
+  });
+}
+
 export function addWalkingLike(data) {
   return request({
     url: "/api/walking/addLike",
