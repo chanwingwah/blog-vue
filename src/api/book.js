@@ -8,3 +8,21 @@ export function getList(params) {
     params
   });
 }
+
+export function add(data) {
+  return request({
+    url: "/api/book/new",
+    method: "post",
+    data
+  });
+}
+export function update(id, data) {
+  return request({
+    url: "/api/book/update",
+    method: "post",
+    data,
+    params: {
+      id
+    }
+  });
+}

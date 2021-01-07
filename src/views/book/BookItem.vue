@@ -10,6 +10,13 @@
     <div class="description">
       {{ book.description }}
     </div>
+    <AdminTools
+      module="book"
+      :id="book._id"
+      :target="book"
+      @delete="$emit('reload')"
+      @update="$emit('reload')"
+    ></AdminTools>
     <divider></divider>
   </div>
 </template>

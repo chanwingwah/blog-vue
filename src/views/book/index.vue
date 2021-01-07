@@ -18,7 +18,7 @@
           v-for="(book, index) in booklist"
           :key="index"
         >
-          <BookItem :book="book"></BookItem>
+          <BookItem :book="book" @reload="reload"></BookItem>
         </div>
       </div>
     </div>
@@ -34,14 +34,19 @@ export default {
     BookItem
   },
   created() {
-    getList().then(res => {
-      this.booklist = res.data.data;
-    });
+    this.reload();
   },
   data() {
     return {
       booklist: []
     };
+  },
+  methods: {
+    reload() {
+      getList().then(res => {
+        this.booklist = res.data.data;
+      });
+    }
   }
 };
 </script>

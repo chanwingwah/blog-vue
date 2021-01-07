@@ -41,22 +41,31 @@
       :mode="mode"
       @update="$emit('update')"
     ></walkingEdit>
+    <bookEdit
+      :visible.sync="bookEditing"
+      :target="target"
+      :mode="mode"
+      @update="$emit('update')"
+    ></bookEdit>
   </div>
 </template>
 
 <script>
 //  管理员工具箱s
 import walkingEdit from "@/views/walking/Edit";
+import bookEdit from "@/views/book/Edit";
 
 import { mapGetters } from "vuex";
 import { update as blogUpdate } from "@/api/blog";
 import { delComment } from "@/api/comment";
 import { update as updateWalking } from "@/api/walking";
+import { update as updateBook } from "@/api/book";
 
 export default {
   name: "adminTools",
   components: {
-    walkingEdit
+    walkingEdit,
+    bookEdit
   },
   computed: {
     ...mapGetters(["login"])
@@ -75,6 +84,7 @@ export default {
     return {
       deleting: false,
       walkingEditing: false,
+      bookEditing: false,
       mode: ""
     };
   },
@@ -104,6 +114,13 @@ export default {
           });
           break;
         }
+        case "book": {
+          updateBook(this.id, { status: -1 }).then(() => {
+            this.$message.success("删除成功");
+            this.$emit("delete");
+          });
+          break;
+        }
         default: {
           this.$message.info("该功能未完善");
           break;
@@ -121,6 +138,10 @@ export default {
           this.walkingEditing = true;
           break;
         }
+        case "book": {
+          this.bookEditing = true;
+          break;
+        }
         default: {
           this.$message.info("该功能未完善");
           break;
@@ -136,6 +157,10 @@ export default {
         }
         case "walking": {
           this.walkingEditing = true;
+          break;
+        }
+        case "book": {
+          this.bookEditing = true;
           break;
         }
         default: {
