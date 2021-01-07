@@ -48,7 +48,16 @@ export default {
   computed: {
     ...mapGetters(["login", "mode"])
   },
-  props: ["module", "id", "show", "target"], // 模块，操作，id
+  props: {
+    module: String,
+    id: String,
+    show: {
+      default() {
+        return ["add", "edit", "del"];
+      }
+    },
+    target: Object
+  }, // 模块，操作，id
   data() {
     return {
       deleting: false
