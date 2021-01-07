@@ -44,6 +44,11 @@
         </div>
       </div>
     </div>
+    <AdminTools
+      module="blog"
+      :id="blog._id"
+      @delete="$emit('delete')"
+    ></AdminTools>
   </div>
 </template>
 

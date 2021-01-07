@@ -13,6 +13,9 @@ import VueScrollTo from "vue-scrollto";
 import Divider from "@/components/Divider";
 Vue.component("Divider", Divider);
 
+import AdminTools from "@/views/admin/AdminTools";
+Vue.component("AdminTools", AdminTools);
+
 Vue.use(VueScrollTo);
 import * as filters from "./filters"; // global filters
 // register global utility filters 注册全局公用过滤器
