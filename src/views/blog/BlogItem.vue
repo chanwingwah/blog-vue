@@ -8,7 +8,7 @@
     <div class="blog-info">
       <div class="item-span">
         <i class="item-icon iconfont icon-time"></i>
-        <span class="item-text">{{ blog.createdAt | formatTime }}</span>
+        <span class="item-text">{{ blog.releaseTime | formatTime }}</span>
       </div>
       <div class="item-span">
         <i class="item-icon iconfont icon-update"></i>

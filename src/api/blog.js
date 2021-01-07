@@ -35,3 +35,20 @@ export function addViewCount(data) {
     data
   });
 }
+export function save(data) {
+  return request({
+    url: "/api/blog/new",
+    method: "post",
+    data
+  });
+}
+export function update(id, data) {
+  return request({
+    url: "/api/blog/update",
+    method: "post",
+    data,
+    params: {
+      id
+    }
+  });
+}

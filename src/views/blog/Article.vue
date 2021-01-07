@@ -18,7 +18,7 @@
                 <div class="item-span">
                   <i class="item-icon iconfont icon-time"></i>
                   <span class="item-text">
-                    {{ article.createdAt | formatTime }}
+                    {{ article.releaseTime | formatTime }}
                   </span>
                 </div>
                 <div class="item-span">
