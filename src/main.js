@@ -5,11 +5,13 @@ import store from "./store";
 import Highlight from "vue-markdown-highlight";
 import "highlight.js/scss/monokai-sublime.scss";
 Vue.use(Highlight);
+import "@/ant.js";
 
 import "@/styles/index.scss"; // global css
 
 import VueScrollTo from "vue-scrollto";
 import Divider from "@/components/Divider";
+Vue.component("Divider", Divider);
 
 Vue.use(VueScrollTo);
 import * as filters from "./filters"; // global filters
@@ -18,9 +20,6 @@ Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key]);
 });
 Vue.config.productionTip = false;
-Vue.component("Divider", Divider);
-import { message } from "ant-design-vue";
-Vue.prototype.$message = message;
 
 new Vue({
   router,
