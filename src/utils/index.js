@@ -1,4 +1,4 @@
-import moment from "moment";
+import dayjs from "dayjs";
 /**
  *  格式化时间
  * @param {Date} time
@@ -6,7 +6,7 @@ import moment from "moment";
  * @returns {string}
  */
 export function formatTime(time, format) {
-  return moment(time).format(format || "YYYY-MM-DD");
+  return dayjs(time).format(format || "YYYY-MM-DD");
 }
 
 /**

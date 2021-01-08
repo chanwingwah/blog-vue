@@ -3,16 +3,11 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
-import "@/ant.js";
-
 import "@/styles/index.scss"; // global css
 
 import VueScrollTo from "vue-scrollto";
 import Divider from "@/components/Divider";
 Vue.component("Divider", Divider);
-
-import AdminTools from "@/views/admin/AdminTools";
-Vue.component("AdminTools", AdminTools);
 
 Vue.use(VueScrollTo);
 import * as filters from "./filters"; // global filters
@@ -21,7 +16,8 @@ Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key]);
 });
 Vue.config.productionTip = false;
-
+import { message } from "ant-design-vue";
+Vue.prototype.$message = message;
 new Vue({
   router,
   store,

@@ -105,18 +105,16 @@
   </div>
 </template>
 <script>
-import { DatePicker } from "ant-design-vue";
-
 import Markdown from "@/components/Markdown";
 import { debounce } from "@/utils/index";
 import { save, getDetail, update } from "@/api/blog";
 import Hljs from "highlight.js";
 import "highlight.js/scss/monokai-sublime.scss";
+import "@/ant.js";
 
 export default {
   components: {
-    Markdown,
-    DatePicker
+    Markdown
   },
   directives: {
     highlight: function(el) {

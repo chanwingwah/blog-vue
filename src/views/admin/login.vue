@@ -63,6 +63,7 @@
 </template>
 
 <script>
+import "@/ant.js";
 import { mapGetters } from "vuex";
 import store from "@/store";
 import { login, logout } from "@/api/index";

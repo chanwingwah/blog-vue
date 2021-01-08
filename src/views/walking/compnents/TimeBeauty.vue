@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import moment from "moment";
+import dayjs from "dayjs";
 export default {
   name: "TimeBeauty",
   props: {
@@ -21,13 +21,13 @@ export default {
   },
   computed: {
     year() {
-      return moment(this.time).format("YYYY");
+      return dayjs(this.time).format("YYYY");
     },
     month() {
-      return moment(this.time).format("M");
+      return dayjs(this.time).format("M");
     },
     day() {
-      return moment(this.time).format("DD");
+      return dayjs(this.time).format("DD");
     }
   }
 };
