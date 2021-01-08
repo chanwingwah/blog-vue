@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { InfoCard } from "@/components";
+import InfoCard from "@/components/InfoCard";
 import BlogItem from "@/views/blog/BlogItem";
 import { getList } from "@/api/blog";
 export default {

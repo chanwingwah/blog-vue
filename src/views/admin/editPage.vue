@@ -105,9 +105,9 @@
   </div>
 </template>
 <script>
-import {  DatePicker } from "ant-design-vue";
+import { DatePicker } from "ant-design-vue";
 
-import { Markdown } from "@/components";
+import Markdown from "@/components/Markdown";
 import { debounce } from "@/utils/index";
 import { save, getDetail, update } from "@/api/blog";
 import Hljs from "highlight.js";
