@@ -4,18 +4,23 @@
       <navbar />
       <app-main />
     </div>
+    <LazyMan v-if="login"></LazyMan>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import { Navbar, AppMain } from "./components";
 import ResizeMixin from "./mixin/ResizeHandler";
-
 export default {
   name: "Layout",
   components: {
     Navbar,
-    AppMain
+    AppMain,
+    LazyMan: () => import("@/layout/components/LazyMan")
+  },
+  computed: {
+    ...mapGetters(["login"])
   },
   mixins: [ResizeMixin]
 };
