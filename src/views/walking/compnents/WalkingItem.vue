@@ -48,7 +48,8 @@ export default {
   name: "home",
   components: {
     TimeBeauty,
-    Like
+    Like,
+    AdminTools: () => import("@/views/admin/AdminTools")
   },
   props: ["walking"],
   data() {

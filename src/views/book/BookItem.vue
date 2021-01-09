@@ -24,7 +24,9 @@
 <script>
 export default {
   name: "BookItem",
-  components: {},
+  components: {
+    AdminTools: () => import("@/views/admin/AdminTools")
+  },
   props: {
     book: {
       type: Object,

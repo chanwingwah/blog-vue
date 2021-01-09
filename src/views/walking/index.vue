@@ -35,7 +35,10 @@ import { getList } from "@/api/walking";
 import WalkingItem from "@/views/walking/compnents/WalkingItem";
 export default {
   name: "walkinng",
-  components: { WalkingItem },
+  components: {
+    WalkingItem,
+    AdminTools: () => import("@/views/admin/AdminTools")
+  },
   data() {
     return {
       walkingList: []

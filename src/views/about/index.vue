@@ -70,7 +70,6 @@
 </template>
 
 <script>
-import Edit from "@/views/about/Edit";
 import InfoCard from "@/components/InfoCard";
 import { getList } from "@/api/index";
 import { mapGetters } from "vuex";
@@ -81,7 +80,7 @@ export default {
   components: {
     InfoCard,
     WorkExperience,
-    Edit
+    Edit: () => import("@/views/about/Edit")
   },
   data() {
     return {

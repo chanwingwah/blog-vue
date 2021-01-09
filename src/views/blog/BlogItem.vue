@@ -57,7 +57,8 @@ import Tags from "@/views/blog/Tags";
 export default {
   name: "BlogItem",
   components: {
-    Tags
+    Tags,
+    AdminTools: () => import("@/views/admin/AdminTools")
   },
   props: ["blog"]
 };

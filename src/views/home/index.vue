@@ -32,7 +32,8 @@ export default {
   name: "home",
   components: {
     InfoCard,
-    BlogItem
+    BlogItem,
+    AdminTools: () => import("@/views/admin/AdminTools")
   },
   data() {
     return {

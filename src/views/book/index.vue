@@ -37,7 +37,8 @@ import BookItem from "@/views/book/BookItem";
 export default {
   name: "book",
   components: {
-    BookItem
+    BookItem,
+    AdminTools: () => import("@/views/admin/AdminTools")
   },
   created() {
     this.reload();

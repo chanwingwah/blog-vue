@@ -50,13 +50,15 @@ export default {
   props: ["comment", "index"],
   computed: {
     avator() {
-      return ""; //this.comment.nickname.slice(0, 1);
+      return this.comment.nickname.slice(0, 1);
     }
   },
   data() {
     return {};
   },
-  components: {}
+  components: {
+    AdminTools: () => import("@/views/admin/AdminTools")
+  }
 };
 </script>
 <style lang="scss" scoped>
