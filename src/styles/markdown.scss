@@ -8,6 +8,19 @@
   word-wrap: break-word;
 }
 
+
+.markdown-body  .toc-anchor {
+  display: none;
+}
+.markdown-body  .md-anchor {
+  color: #999;
+  font-size: 16px;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 .markdown-body .pl-c {
   color: #6a737d;
 }
