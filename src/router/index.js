@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 /* Layout */
 import Layout from "@/layout";
+import Home from "@/views/home/index";
 Vue.use(VueRouter);
 
 const routes = [
@@ -13,7 +14,7 @@ const routes = [
       {
         path: "home",
         name: "home",
-        component: () => import("@/views/home/index"),
+        component: Home,
         meta: { title: "首页" }
       },
       {
