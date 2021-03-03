@@ -1,7 +1,7 @@
 <template>
   <div class="book-item">
     <divider></divider>
-    <img class="picture" :src="urlPrefix + book.photo" alt="" />
+    <img class="picture" :src="book.photo" alt="" />
     <h3 class="title">
       {{ book.name }}
     </h3>
@@ -36,9 +36,7 @@ export default {
     }
   },
   data() {
-    return {
-      urlPrefix: "http://qmd6awdkv.hn-bkt.clouddn.com/"
-    };
+    return {};
   }
 };
 </script>
