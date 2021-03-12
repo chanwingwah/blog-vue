@@ -42,7 +42,7 @@ export default {
     this.jsontext = JSON.stringify(this.defaultForm, null, 2);
   },
   methods: {
-    handleOk(e) {
+    handleOk() {
       this.confirmLoading = true;
       let form;
       try {
