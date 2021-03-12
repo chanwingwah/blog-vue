@@ -47,14 +47,13 @@ export default {
 <style lang="scss" scoped>
 .menu {
   height: 100%;
-  margin: 0 10px;
   color: #999999;
   font-size: 18px;
   display: inline-block;
 }
 .menu-link {
   height: 100%;
-  padding: 0 20px;
+  padding: 0 30px;
   display: flex;
   align-items: center;
   cursor: pointer;
