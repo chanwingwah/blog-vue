@@ -26,7 +26,7 @@
     <div class="count-info">
       <div class="count-info-item">
         <div class="infoItem-count">
-          {{ counts.blogNum }}
+          {{ blogNum }}
         </div>
         <div class="infoItem-text">
           博文
@@ -34,7 +34,7 @@
       </div>
       <div class="count-info-item">
         <div class="infoItem-count" style="font-size:34px">
-          {{ counts.walkingNum }}
+          {{ walkingNum }}
         </div>
         <div class="infoItem-text">
           行博
@@ -42,7 +42,7 @@
       </div>
       <div class="count-info-item">
         <div class="infoItem-count">
-          {{ counts.subscribeNum }}
+          {{ subscribeNum }}
         </div>
         <div class="infoItem-text">
           订阅数
@@ -53,23 +53,18 @@
   </div>
 </template>
 <script>
-import { getCounts } from "@/api/index";
+import { mapState } from "vuex";
 export default {
   name: "infoCard",
   data() {
-    return {
-      counts: {
-        blogNum: 0,
-        walkingNum: 0,
-        subscribeNum: 0
-      }
-    };
+    return {};
   },
-  created() {
-    getCounts().then(res => {
-      this.counts = res.data.data;
-    });
-  }
+  computed: mapState({
+    blogNum: state => state.app.blogNum,
+    walkingNum: state => state.app.walkingNum,
+    subscribeNum: state => state.app.walkingNum
+  }),
+  created() {}
 };
 </script>
 <style lang="scss" scoped>

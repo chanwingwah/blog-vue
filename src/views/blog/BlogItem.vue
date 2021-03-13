@@ -10,7 +10,7 @@
         <i class="item-icon iconfont icon-time"></i>
         <span class="item-text">{{ blog.releaseTime | formatTime }}</span>
       </div>
-      <div class="item-span">
+      <div class="item-span update-time">
         <i class="item-icon iconfont icon-update"></i>
         <span>{{ blog.updatedAt | formatTime }}</span>
       </div>
@@ -69,15 +69,10 @@ export default {
   padding: 20px 30px;
   margin-bottom: 20px;
 
-  // 标题
-  //   .blog-title-link {
-  //     display: block;
-  //   }
   .blog-title {
-    font-size: 24;
+    font-size: 24px;
     font-weight: normal;
-    margin: 0;
-    line-height: 2.5em;
+    margin: 5px 0;
   }
 
   .blog-info {
@@ -122,6 +117,31 @@ export default {
     .blog-bottom-right {
       flex-shrink: 0;
       display: flex;
+    }
+  }
+}
+@media (max-width: 992px) {
+  .blog-item {
+    padding: 15px 20px;
+    margin: 10px 0;
+    .blog-title {
+      font-size: 18px;
+    }
+    .update-time {
+      display: none;
+    }
+    .blog-summary {
+      font-size: 12px;
+      margin: 10px 0;
+      display: none;
+    }
+    .blog-bottom {
+      flex-direction: column;
+      .blog-bottom-right {
+        margin-top: 10px;
+        justify-content: flex-end;
+        align-items: center;
+      }
     }
   }
 }

@@ -40,6 +40,7 @@ export default {
 }
 
 .time-circle {
+  padding: 10px 0 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -51,6 +52,7 @@ export default {
   color: #828d95;
   .month {
     font-size: 16px;
+    margin-bottom: -5px;
   }
 
   .day {
@@ -62,5 +64,20 @@ export default {
   font-size: 20px;
   color: #cccccc;
   margin-top: 10px;
+}
+@media (max-width: 992px) {
+  .time-circle {
+    height: 4em;
+    width: 4em;
+    border: 2px solid #828d95;
+    font-size: 15px;
+    .month {
+      font-size: 16px;
+    }
+
+    .day {
+      font-size: 25px;
+    }
+  }
 }
 </style>

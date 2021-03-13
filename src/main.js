@@ -15,6 +15,7 @@ import * as filters from "./filters"; // global filters
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key]);
 });
+
 Vue.config.productionTip = false;
 import { message } from "ant-design-vue";
 Vue.prototype.$message = message;
@@ -23,3 +24,5 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount("#app");
+
+store.dispatch("app/getCounts");

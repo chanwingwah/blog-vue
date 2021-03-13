@@ -1,14 +1,16 @@
 <template>
   <section class="wrap-outer">
     <div class="wrap-inner">
-      <div style="padding:20px 0" class="article-content">
+      <div class="article-content">
         <template v-if="article">
-          <transition name="article-menu">
-            <article-menu
-              class="article-menu shadow-1  article-left"
-              :menuKey="menuKey"
-            ></article-menu>
-          </transition>
+          <div v-show="device === 'desktop'">
+            <transition name="article-menu">
+              <article-menu
+                class="article-menu shadow-1  article-left"
+                :menuKey="menuKey"
+              ></article-menu>
+            </transition>
+          </div>
           <div class="article-box">
             <div class="shadow-1 article-text ">
               <h1 class="title">
@@ -21,7 +23,7 @@
                     {{ article.releaseTime | formatTime }}
                   </span>
                 </div>
-                <div class="item-span">
+                <div class="item-span updatedAt">
                   <i class="item-icon iconfont icon-update"></i>
                   <span>{{ article.updatedAt | formatTime }}</span>
                 </div>
@@ -81,7 +83,7 @@ export default {
   },
   mixins: [ToTop],
   computed: {
-    ...mapGetters(["readedArticles"])
+    ...mapGetters(["readedArticles", "device"])
   },
   data() {
     return {
@@ -133,8 +135,7 @@ export default {
 </style>
 <style lang="scss" scoped>
 .article-content {
-  // display: flex;
-  // float: left;
+  padding: 20px 0;
   position: relative;
 }
 .article-left {
@@ -150,6 +151,7 @@ export default {
 .article-box {
   margin-left: 335px;
 }
+
 .article-text {
   padding: 20px;
   overflow: hidden;
@@ -214,5 +216,37 @@ export default {
   padding: 20px;
   margin-top: 40px;
   background: #ffffff;
+}
+
+@media (max-width: 1260px) {
+  .article-content {
+    padding: 20px 20px;
+  }
+  .article-box {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 992px) {
+  .article-content {
+    padding: 0;
+  }
+  .article-text {
+    padding: 16px;
+    .title {
+      font-size: 24px;
+      margin: 0;
+    }
+    .updatedAt {
+      display: none;
+    }
+    .blog-info {
+      margin: 10px 0 20px;
+    }
+  }
+
+  .article-box {
+    margin-left: 0;
+  }
 }
 </style>

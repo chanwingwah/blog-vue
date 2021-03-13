@@ -79,6 +79,11 @@ export default {
     font-size: 14px;
   }
 }
+@media (max-width: 1260px) {
+  .mybook-info {
+    padding: 30px 20px;
+  }
+}
 .book-content {
   display: flex;
   flex-wrap: wrap;
@@ -86,5 +91,11 @@ export default {
 .book-content-item {
   width: 350px;
   margin: 20px;
+}
+@media (max-width: 992px) {
+  .book-content-item {
+    width: 100%;
+    margin: 20px;
+  }
 }
 </style>

@@ -200,6 +200,7 @@ export default {
       if (!this.formData.website) {
         return true;
       }
+      // eslint-disable-next-line no-useless-escape
       let re2 = /^((https|http|ftp|rtsp|mms){0,1}(:\/\/){0,1})(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])+$/;
 
       if (!re2.test(this.formData.website)) {
@@ -223,6 +224,7 @@ export default {
 }
 .comment-textarea {
   width: 600px;
+  max-width: 100%;
   font-size: 15px;
   padding: 10px;
   border: 1px solid #cccccc;
@@ -243,6 +245,7 @@ export default {
 }
 .comment-input {
   font-size: 15px;
+  max-width: 100%;
   color: #666;
   height: 35px;
   line-height: 35px;

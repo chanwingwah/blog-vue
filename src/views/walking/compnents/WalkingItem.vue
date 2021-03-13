@@ -1,5 +1,5 @@
 <template>
-  <div class=" walking-item">
+  <div class="walking-item">
     <div class="walking-item-left">
       <TimeBeauty :time="walking.createdAt"></TimeBeauty>
     </div>
@@ -62,10 +62,10 @@ export default {
       if (this.walking.images.length <= 1) {
         return "image1";
       }
-      if (this.walking.images.length == 2) {
+      if (this.walking.images.length >= 2 && this.walking.images.length < 5) {
         return "image2";
       }
-      if (this.walking.images.length >= 3) {
+      if (this.walking.images.length >= 5) {
         return "image3";
       }
       return undefined;
@@ -114,7 +114,6 @@ export default {
   margin-bottom: 10px;
 }
 .image-item {
-  padding: 10px;
   border: 1px solid #f0f0f0;
   margin-right: 10px;
   margin-bottom: 10px;
@@ -126,6 +125,7 @@ export default {
 
 .image1 {
   width: 300px;
+  max-width: 100%;
   max-height: 300px;
   display: flex;
   align-items: center;
@@ -145,5 +145,35 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 992px) {
+  .walking-item {
+    display: flex;
+    background-color: #ffffff;
+    padding: 20px 0px;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .image1 {
+    width: 100%;
+    max-height: 300px;
+  }
+
+  .image2 {
+    width: calc(40vw - 50px);
+    height: calc(40vw - 50px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .image3 {
+    width: calc(25vw - 30px);
+    height: calc(25vw - 30px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 </style>

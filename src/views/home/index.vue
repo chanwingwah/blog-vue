@@ -1,11 +1,11 @@
 <template>
   <section class="wrap-outer">
     <div class="wrap-inner">
-      <div style="padding:20px 0" class="home-content">
-        <div>
+      <div class="home-content">
+        <div v-if="showInfoCard">
           <InfoCard></InfoCard>
         </div>
-        <div style="margin-left:20px;flex-grow:1">
+        <div class="blog-list">
           <BlogItem
             v-for="blog in blogList"
             :key="blog._id"
@@ -28,12 +28,19 @@
 import InfoCard from "@/components/InfoCard";
 import BlogItem from "@/views/blog/BlogItem";
 import { getList } from "@/api/blog";
+import { mapGetters } from "vuex";
 export default {
   name: "home",
   components: {
     InfoCard,
     BlogItem,
     AdminTools: () => import("@/views/admin/AdminTools")
+  },
+  computed: {
+    ...mapGetters(["device"]),
+    showInfoCard() {
+      return this.device === "desktop";
+    }
   },
   data() {
     return {
@@ -55,5 +62,26 @@ export default {
 <style lang="scss" scoped>
 .home-content {
   display: flex;
+  padding: 20px 0;
+}
+
+.blog-list {
+  margin-left: 20px;
+  flex-grow: 1;
+}
+
+@media (max-width: 1260px) {
+  .blog-list {
+    margin: 0 20px;
+  }
+}
+@media (max-width: 992px) {
+  .home-content {
+    display: flex;
+    padding: 0;
+  }
+  .blog-list {
+    margin: 0;
+  }
 }
 </style>

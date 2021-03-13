@@ -1,5 +1,5 @@
 <template>
-  <div style="width:850px;margin: 20px auto">
+  <div class="walking-content">
     <div class="walking-bg">
       <a
         class="pic-source"
@@ -57,13 +57,25 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.walking-content {
+  width: 850px;
+  margin: 20px auto;
+}
+
+@media (max-width: 1260px) {
+  .walking-content {
+    width: 100%;
+    margin: 0;
+    background: #fff;
+  }
+}
 .walking-bg {
   background: url(../../assets/images/walkingbg.jpg) no-repeat;
   height: 380px;
   background-attachment: fixed;
   background-attachment: fixed;
   background-size: cover;
-  background-position: 50%;
+  background-position: 80%;
   position: relative;
   display: flex;
   align-items: center;

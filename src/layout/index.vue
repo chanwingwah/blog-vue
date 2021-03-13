@@ -41,4 +41,10 @@ export default {
   display: flex;
   flex-direction: column;
 }
+
+@media (max-width: 992px) {
+  .main-container {
+    padding-top: 55px;
+  }
+}
 </style>

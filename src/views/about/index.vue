@@ -1,8 +1,8 @@
 <template>
   <section class="wrap-outer about">
     <div class="wrap-inner about-inner">
-      <div style="padding:20px 0" class="about-content">
-        <div class="right">
+      <div class="about-content">
+        <div class="right" v-if="showInfoCard">
           <InfoCard></InfoCard>
         </div>
         <div class="info shadow-1">
@@ -40,7 +40,7 @@
                   href="https://github.com/chanwingwah"
                   target="_blank"
                 >
-                  https://github.com/chanwingwah
+                  chanwingwah
                   <i class="iconfont icon-launch"></i>
                 </a>
               </div>
@@ -89,7 +89,10 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["login"])
+    ...mapGetters(["login", "device"]),
+    showInfoCard() {
+      return this.device === "desktop";
+    }
   },
   created() {
     this.reload();
@@ -115,7 +118,7 @@ export default {
 .about-content {
   display: flex;
   height: 100%;
-
+  padding: 20px 0;
   .right {
     flex-shrink: 0;
     margin-right: 20px;
@@ -127,6 +130,21 @@ export default {
   min-height: 100%;
   flex-grow: 1;
   padding: 20px 40px;
+}
+
+@media (max-width: 1260px) {
+  .info {
+    margin: 0 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  .info {
+    margin: 0;
+  }
+  .about-content {
+    padding: 0;
+  }
 }
 
 .info-title {
@@ -159,7 +177,7 @@ export default {
   color: #666666;
   .label {
     display: inline-block;
-    width: 80px;
+    width: 70px;
   }
   a.value {
     &:hover {
