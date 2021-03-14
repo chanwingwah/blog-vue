@@ -75,6 +75,7 @@ export default {
   background-attachment: fixed;
   background-attachment: fixed;
   background-size: cover;
+  background-color: #fafafa;
   background-position: 80%;
   position: relative;
   display: flex;
