@@ -62,7 +62,7 @@ export default {
   computed: mapState({
     blogNum: state => state.app.blogNum,
     walkingNum: state => state.app.walkingNum,
-    subscribeNum: state => state.app.walkingNum
+    subscribeNum: state => state.app.subscribeNum
   }),
   created() {}
 };

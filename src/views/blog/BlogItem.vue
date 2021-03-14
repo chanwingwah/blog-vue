@@ -137,6 +137,7 @@ export default {
     }
     .blog-bottom {
       flex-direction: column;
+      margin-top: 5px;
       .blog-bottom-right {
         margin-top: 10px;
         justify-content: flex-end;
