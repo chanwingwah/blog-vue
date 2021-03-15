@@ -3,14 +3,13 @@
     <div class="wrap-inner">
       <div class="article-content">
         <template v-if="article">
-          <div v-show="device === 'desktop'">
-            <transition name="article-menu">
-              <article-menu
-                class="article-menu shadow-1  article-left"
-                :menuKey="menuKey"
-              ></article-menu>
-            </transition>
-          </div>
+          <transition name="article-menu">
+            <article-menu
+              v-show="device === 'desktop'"
+              class="article-menu shadow-1  article-left"
+              :menuKey="menuKey"
+            ></article-menu>
+          </transition>
           <div class="article-box">
             <div class="shadow-1 article-text ">
               <h1 class="title">
