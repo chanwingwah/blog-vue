@@ -12,21 +12,26 @@
           打算以后读完一本书后要在博客中写一篇博文、读后感。
         </p>
       </div>
-      <div class="book-content">
-        <div
-          class="book-content-item"
-          v-for="(book, index) in booklist"
-          :key="index"
-        >
-          <BookItem :book="book" @reload="reload"></BookItem>
+      <template v-if="loading">
+        <MySkeleton class="MySkeleton" active></MySkeleton>
+      </template>
+      <template v-else>
+        <div class="book-content">
+          <div
+            class="book-content-item"
+            v-for="(book, index) in booklist"
+            :key="index"
+          >
+            <BookItem :book="book" @reload="reload"></BookItem>
+          </div>
+          <AdminTools
+            v-if="booklist.length === 0"
+            module="book"
+            :show="['add']"
+            @update="reload"
+          ></AdminTools>
         </div>
-        <AdminTools
-          v-if="booklist.length === 0"
-          module="book"
-          :show="['add']"
-          @update="reload"
-        ></AdminTools>
-      </div>
+      </template>
     </div>
   </section>
 </template>
@@ -45,14 +50,20 @@ export default {
   },
   data() {
     return {
-      booklist: []
+      booklist: [],
+      loading: false
     };
   },
   methods: {
     reload() {
-      getList().then(res => {
-        this.booklist = res.data.data;
-      });
+      this.loading = true;
+      getList()
+        .then(res => {
+          this.booklist = res.data.data;
+        })
+        .finally(() => {
+          this.loading = false;
+        });
     }
   }
 };

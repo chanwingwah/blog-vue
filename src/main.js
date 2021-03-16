@@ -8,6 +8,8 @@ import "@/styles/index.scss"; // global css
 import VueScrollTo from "vue-scrollto";
 import Divider from "@/components/Divider";
 Vue.component("Divider", Divider);
+import MySkeleton from "@/components/skeleton";
+Vue.use(MySkeleton);
 
 Vue.use(VueScrollTo);
 import * as filters from "./filters"; // global filters

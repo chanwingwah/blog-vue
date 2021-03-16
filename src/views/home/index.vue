@@ -5,7 +5,15 @@
         <div v-if="showInfoCard">
           <InfoCard></InfoCard>
         </div>
-        <div class="blog-list">
+        <div class="blog-list" v-if="loading">
+          <MySkeleton
+            v-for="i in 3"
+            :key="i"
+            class="MySkeleton"
+            active
+          ></MySkeleton>
+        </div>
+        <div class="blog-list" v-else>
           <BlogItem
             v-for="blog in blogList"
             :key="blog._id"
@@ -44,7 +52,8 @@ export default {
   },
   data() {
     return {
-      blogList: []
+      blogList: [],
+      loading: false
     };
   },
   created() {
@@ -52,9 +61,14 @@ export default {
   },
   methods: {
     reload() {
-      getList().then(res => {
-        this.blogList = res.data.data;
-      });
+      this.loading = true;
+      getList()
+        .then(res => {
+          this.blogList = res.data.data;
+        })
+        .finally(() => {
+          this.loading = false;
+        });
     }
   }
 };
@@ -78,7 +92,7 @@ export default {
 @media (max-width: 992px) {
   .home-content {
     display: flex;
-    padding: 0;
+    padding: 16px 0 0;
   }
   .blog-list {
     margin: 0;

@@ -52,6 +52,7 @@
             </div>
           </div>
         </template>
+        <MySkeleton :rows="5" v-else class="MySkeleton" active></MySkeleton>
       </div>
     </div>
     <BackToTop></BackToTop>

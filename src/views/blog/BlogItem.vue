@@ -123,7 +123,7 @@ export default {
 @media (max-width: 992px) {
   .blog-item {
     padding: 15px 20px;
-    margin: 10px 0;
+    margin: 0 0 16px;
     .blog-title {
       font-size: 18px;
     }

@@ -16,16 +16,26 @@
       </div>
     </div>
     <div style="padding:20px;background:#fff">
-      <div v-for="walking in walkingList" :key="walking._id">
-        <WalkingItem :walking="walking" @reload="reload"></WalkingItem>
-        <divider></divider>
-      </div>
-      <AdminTools
-        v-if="walkingList.length === 0"
-        module="walking"
-        :show="['add']"
-        @update="reload"
-      ></AdminTools>
+      <template v-if="loading">
+        <MySkeleton
+          v-for="i in 3"
+          :key="i"
+          class="MySkeleton"
+          active
+        ></MySkeleton>
+      </template>
+      <template v-else>
+        <div v-for="walking in walkingList" :key="walking._id">
+          <WalkingItem :walking="walking" @reload="reload"></WalkingItem>
+          <divider></divider>
+        </div>
+        <AdminTools
+          v-if="walkingList.length === 0"
+          module="walking"
+          :show="['add']"
+          @update="reload"
+        ></AdminTools>
+      </template>
     </div>
   </div>
 </template>
@@ -41,7 +51,8 @@ export default {
   },
   data() {
     return {
-      walkingList: []
+      walkingList: [],
+      loading: false
     };
   },
   created() {
@@ -49,9 +60,14 @@ export default {
   },
   methods: {
     reload() {
-      getList().then(res => {
-        this.walkingList = res.data.data;
-      });
+      this.loading = true;
+      getList()
+        .then(res => {
+          this.walkingList = res.data.data;
+        })
+        .finally(() => {
+          this.loading = false;
+        });
     }
   }
 };
