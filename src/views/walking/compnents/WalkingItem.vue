@@ -19,7 +19,7 @@
           </div>
         </viewer>
       </div>
-      <div class="walking-info" v-html="walking.contents"></div>
+      <div class="walking-info iconfont" v-html="walking.contents"></div>
       <div class="walking-footer">
         <Like :walking="walking"></Like>
         <div class="likeCount">({{ walking.likeCount }})</div>
@@ -92,6 +92,16 @@ export default {
   flex-direction: column;
   justify-content: center;
   // padding-top: 10px;
+}
+
+.walking-info {
+  ::v-deep a {
+    color: #1890ff;
+    &::after {
+      content: "\e6df";
+      font-size: 0.8em;
+    }
+  }
 }
 
 .walking-footer {
