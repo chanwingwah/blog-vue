@@ -19,9 +19,7 @@
           </div>
         </viewer>
       </div>
-      <div class="walking-info">
-        {{ walking.contents }}
-      </div>
+      <div class="walking-info" v-html="walking.contents"></div>
       <div class="walking-footer">
         <Like :walking="walking"></Like>
         <div class="likeCount">({{ walking.likeCount }})</div>
