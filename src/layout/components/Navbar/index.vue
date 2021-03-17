@@ -17,7 +17,10 @@
             <img src="@/assets/images/head.jpg" alt="我的头像" class="myhead" />
             <SubscribeBtn class="SubscribeBtn"></SubscribeBtn>
           </div>
-          <divider style="margin: 10px 0"></divider>
+          <divider
+            v-show="this.device === 'mobile'"
+            style="margin: 10px 0"
+          ></divider>
           <div v-show="showMarker" id="marker" ref="marker"></div>
           <div v-show="showMarker" class="cover"></div>
           <MenuItem
