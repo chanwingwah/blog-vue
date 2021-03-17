@@ -22,6 +22,10 @@
       chanwingwah
       <i class="iconfont icon-launch" style="font-size:12px"></i>
     </a>
+    <div style="margin-bottom:15px">
+      <SubscribeBtn></SubscribeBtn>
+    </div>
+
     <Divider></Divider>
     <div class="count-info">
       <div class="count-info-item">
@@ -54,8 +58,12 @@
 </template>
 <script>
 import { mapState } from "vuex";
+import SubscribeBtn from "@/components/SubscribeBtn";
 export default {
   name: "infoCard",
+  components: {
+    SubscribeBtn
+  },
   data() {
     return {};
   },
@@ -96,7 +104,7 @@ export default {
 .mygithub {
   font-size: 14px;
   color: #666666;
-  margin-bottom: 25px;
+  margin-bottom: 10px;
   &:hover {
     color: #cccccc;
     cursor: pointer;

@@ -13,6 +13,11 @@
       </div>
       <div class="menus" :class="sideBarClass" @click="toggleSideBar(false)">
         <div class="menuList" @click.prevent.stop="() => {}">
+          <div class="info" v-show="this.device === 'mobile'">
+            <img src="@/assets/images/head.jpg" alt="我的头像" class="myhead" />
+            <SubscribeBtn class="SubscribeBtn"></SubscribeBtn>
+          </div>
+          <divider style="margin: 10px 0"></divider>
           <div v-show="showMarker" id="marker" ref="marker"></div>
           <div v-show="showMarker" class="cover"></div>
           <MenuItem
@@ -34,11 +39,14 @@
 <script>
 import MenuItem from "@/layout/components/Navbar/MenuItem";
 import MenuButton from "@/layout/components/Navbar/MenuButton";
+import SubscribeBtn from "@/components/SubscribeBtn";
+
 import { mapGetters } from "vuex";
 export default {
   components: {
     MenuItem,
-    MenuButton
+    MenuButton,
+    SubscribeBtn
   },
   props: {},
   computed: {
@@ -186,6 +194,23 @@ export default {
 }
 
 @media (max-width: 992px) {
+  .info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    .myhead {
+      height: 100px;
+      width: 100px;
+      border-radius: 50%;
+    }
+
+    .SubscribeBtn {
+      margin: 10px;
+    }
+  }
+
   .nav-menubutton {
     display: block;
     margin-left: 15px;
@@ -219,6 +244,7 @@ export default {
     left: 0px;
     width: 100%;
     justify-content: flex-start;
+    background: rgba($color: #000000, $alpha: 0.15);
   }
   .menuList {
     width: 250px;
@@ -238,8 +264,8 @@ export default {
 
   .sidebar.hide {
     left: -250px;
-
     width: 250px;
+    background: #ffffff;
   }
 }
 </style>

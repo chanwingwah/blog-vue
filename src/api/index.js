@@ -7,6 +7,15 @@ export function getCounts(params) {
     params
   });
 }
+
+export function subscribe(data) {
+  return request({
+    url: "/api/subscribe/new",
+    method: "post",
+    data
+  });
+}
+
 export function login(data) {
   return request({
     url: "/api/user/login",
