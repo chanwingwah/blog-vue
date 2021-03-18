@@ -75,7 +75,7 @@ export default {
 <style lang="scss" scoped>
 .walking-content {
   width: 850px;
-  margin: 20px auto;
+  margin: 20px auto 0;
 }
 
 @media (max-width: 1260px) {

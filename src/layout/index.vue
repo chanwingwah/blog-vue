@@ -3,6 +3,7 @@
     <div class="main-container">
       <navbar />
       <app-main />
+      <Bottom></Bottom>
     </div>
     <LazyMan v-if="login"></LazyMan>
   </div>
@@ -10,13 +11,14 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { Navbar, AppMain } from "./components";
+import { Navbar, AppMain, Bottom } from "./components";
 import ResizeMixin from "./mixin/ResizeHandler";
 export default {
   name: "Layout",
   components: {
     Navbar,
     AppMain,
+    Bottom,
     LazyMan: () => import("@/layout/components/LazyMan")
   },
   computed: {

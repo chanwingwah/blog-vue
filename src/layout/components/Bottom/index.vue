@@ -1,16 +1,18 @@
 <template>
-  <div class="footer">
-    Copyright © 2021 chenyonghua All Rights Reserved. 粤ICP备 xxx
-  </div>
+  <footer class="footer">
+    ICP : 粤ICP备 2020127788号-2
+  </footer>
 </template>
 <script>
 export default {};
 </script>
 <style lang="scss" scoped>
 .footer {
-  background: #f0f2f5;
+  color: #d0d0d0;
   font-size: 12px;
   width: 100%;
   text-align: center;
+  line-height: 2.5em;
+  margin-top: 10px;
 }
 </style>

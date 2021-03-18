@@ -68,6 +68,9 @@ export default {
   background-color: #ffffff;
   padding: 20px 30px;
   margin-bottom: 20px;
+  &:last-child {
+    margin: 0;
+  }
 
   .blog-title {
     font-size: 24px;
@@ -124,6 +127,9 @@ export default {
   .blog-item {
     padding: 15px 20px;
     margin: 0 0 16px;
+    &:last-child {
+      margin: 0;
+    }
     .blog-title {
       font-size: 18px;
     }

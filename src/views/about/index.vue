@@ -118,7 +118,7 @@ export default {
 .about-content {
   display: flex;
   height: 100%;
-  padding: 20px 0;
+  padding: 20px 0 0;
   .right {
     flex-shrink: 0;
     margin-right: 20px;

@@ -76,7 +76,7 @@ export default {
 <style lang="scss" scoped>
 .home-content {
   display: flex;
-  padding: 20px 0;
+  padding: 20px 0 0;
 }
 
 .blog-list {
