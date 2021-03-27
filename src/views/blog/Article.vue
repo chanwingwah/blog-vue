@@ -63,7 +63,6 @@
 import Tags from "@/views/blog/Tags";
 import BackToTop from "@/components/BackToTop";
 import ArticleMenu from "@/views/blog/ArticleMenu";
-import ToTop from "@/mixin/ToTop";
 import Like from "@/views/blog/Like";
 import Comment from "@/views/blog/Comment/index";
 
@@ -81,7 +80,6 @@ export default {
     Like,
     Comment
   },
-  mixins: [ToTop],
   computed: {
     ...mapGetters(["readedArticles", "device"])
   },
