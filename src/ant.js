@@ -1,7 +1,7 @@
 import Vue from "vue";
 
 import {
-  message,
+  // message,
   // notification,
   // Base,
   // Affix,
@@ -140,7 +140,7 @@ const install = function(Vue) {
     Vue.use(component);
   });
 
-  Vue.prototype.$message = message;
+  // Vue.prototype.$message = message;
   // Vue.prototype.$notification = notification;
   Vue.prototype.$info = Modal.info;
   Vue.prototype.$success = Modal.success;

@@ -52,7 +52,6 @@
 
 <script>
 //  管理员工具箱s
-import "@/ant.js";
 import walkingEdit from "@/views/walking/Edit";
 import bookEdit from "@/views/book/Edit";
 

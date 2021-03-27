@@ -1,5 +1,5 @@
 import axios from "axios";
-import { message } from "ant-design-vue";
+import { message } from "@chanwingwah/my-vue-component";
 
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API // url = base url + request url

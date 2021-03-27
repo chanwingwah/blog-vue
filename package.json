@@ -9,6 +9,7 @@
     "report": "vue-cli-service build --report"
   },
   "dependencies": {
+    "@chanwingwah/my-vue-component": "^0.0.9",
     "ant-design-vue": "^1.7.2",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",

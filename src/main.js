@@ -19,8 +19,10 @@ Object.keys(filters).forEach(key => {
 });
 
 Vue.config.productionTip = false;
-import { message } from "ant-design-vue";
-Vue.prototype.$message = message;
+import "@chanwingwah/my-vue-component/dist/myComponent.css"; // 导入样式
+import { message, wave } from "@chanwingwah/my-vue-component";
+Vue.use(message);
+Vue.use(wave);
 new Vue({
   router,
   store,
