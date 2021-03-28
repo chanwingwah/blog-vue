@@ -12,7 +12,9 @@
             v-for="(image, index) in walking.images"
             :key="index"
           >
-            <img
+            <my-image
+              fit="contain"
+              style="width:100%"
               :src="image"
               :alt="walking.contents + `(${index}/${walking.images.length})`"
             />
@@ -125,6 +127,9 @@ export default {
   border: 1px solid #f0f0f0;
   margin-right: 10px;
   margin-bottom: 10px;
+  ::v-deep .el-image__placeholder {
+    padding-bottom: 100%;
+  }
 }
 .image-item img {
   max-width: 100%;

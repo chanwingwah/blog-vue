@@ -1,7 +1,7 @@
 <template>
-  <div class="book-item">
-    <divider></divider>
-    <img class="picture" :src="book.photo" alt="" />
+  <div class="book-item" v-wave>
+    <!-- <divider></divider> -->
+    <my-image class="picture" :src="book.photo" fit="contain" alt="" />
     <h3 class="title">
       {{ book.name }}
     </h3>
@@ -42,7 +42,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .book-item {
-  //   width: 350px;
   background-color: #ffffff;
   min-height: 100%;
   display: flex;
@@ -51,9 +50,10 @@ export default {
   line-height: 1.8em;
   font-size: 14px;
   .picture {
+    width: 100%;
     height: 200px;
     margin: 0 auto;
-    padding-top: 20px;
+    // padding-top: 20px;
   }
   .title {
     display: inline-block;

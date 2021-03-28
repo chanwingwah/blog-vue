@@ -2,6 +2,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+import image from "@/components/image";
 
 import "@/styles/index.scss"; // global css
 
@@ -23,6 +24,7 @@ import "@chanwingwah/my-vue-component/dist/myComponent.css"; // 导入样式
 import { message, wave } from "@chanwingwah/my-vue-component";
 Vue.use(message);
 Vue.use(wave);
+Vue.use(image);
 new Vue({
   router,
   store,

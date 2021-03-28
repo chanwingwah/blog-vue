@@ -1,6 +1,10 @@
 <template>
   <div class="shadow-1 infoCard">
-    <img src="@/assets/images/head.jpg" alt="我的头像" class="myhead" />
+    <my-image
+      :src="require('@/assets/images/head.jpg')"
+      class="myhead"
+    ></my-image>
+    <!-- <img src="@/assets/images/head.jpg" alt="我的头像"  /> -->
     <h2 class="nickname">
       <router-link class="logo-link" title="关于我" to="/about"
         >陈永华
