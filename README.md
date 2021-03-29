@@ -1,24 +1,28 @@
-# myblog-vue
+# myblog-vue 个人博客客户端
 
-## Project setup
-```
-npm install
-```
+## 介绍
+个人博客网站, vue实现
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+博客地址[http://chanwingwah.info](http://chanwingwah.info/)，欢迎访问
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## 实现功能
 
-### Lints and fixes files
-```
-npm run lint
-```
+- [x] 博客列表，详细页
+- [x] 行博个人动态
+- [x] 个人书单
+- [x] 关于我
+- [x] 移动端适配
+- [x] 文章评论
+- [x] 管理员文章发布、数据更改和删除
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## todo
+
+- [ ] 邮箱订阅
+- [ ] 文章统计归档， 分类查询
+- [ ] 文章分页
+- [ ] 文章关键字搜索功能
+- [ ] 留言功能
+- [ ] UI优化
+- [ ] 添加暗黑模式
+- [ ] 优化文章页， 使用vuepress 的markdown解析
