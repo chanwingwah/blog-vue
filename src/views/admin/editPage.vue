@@ -169,14 +169,11 @@ export default {
     }
   },
   mounted() {
-    this.debounceRender = debounce(() => {
-      this.render();
-    }, 1000);
   },
   methods: {
-    debounceRender() {
-      this.render();
-    },
+    debounceRender:debounce(function() {
+      this.review = this.form.markdown.replace(/↵/gm, "\r");
+    }, 1000, false),
     onSubmit() {
       // 获取HTML
       var check = [
@@ -243,9 +240,6 @@ export default {
     },
     rendered(html) {
       this.reviewHTML = html;
-    },
-    render() {
-      this.review = this.form.markdown.replace(/↵/gm, "\r");
     }
   }
 };
