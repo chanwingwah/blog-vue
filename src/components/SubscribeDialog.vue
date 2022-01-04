@@ -118,7 +118,7 @@ export default {
       // 发送订阅
       subscribe({
         email: mail,
-        nikename: name
+        nickname: name
       }).then(() => {
         this.$message.success("订阅成功！");
         this.handleClose();
