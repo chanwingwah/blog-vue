@@ -1,6 +1,8 @@
 <template>
   <footer class="footer">
-    ICP : 粤ICP备 2020127788号-2
+    <a href="https://beian.miit.gov.cn/" target="_blank">
+      粤ICP备2020127788号
+    </a>
   </footer>
 </template>
 <script>
