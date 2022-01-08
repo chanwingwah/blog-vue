@@ -9,7 +9,7 @@
         }`
       "
       :key="index"
-      @click="handleMenuClick(item.text)"
+      @click="handleMenuClick(item.id)"
     >
       <span>{{ item.text }}</span>
     </li>
@@ -68,11 +68,6 @@ export default {
       }, 1000);
     },
     handleMenuClick(id) {
-      id = id
-        .trim()
-        .replace(/\./g, "")
-        .replace(/\s/g, "-")
-        .toLowerCase();
       const ele = document.getElementById(id);
       const self = this;
       const options = {
@@ -126,6 +121,7 @@ export default {
           case "H1":
             menuItem = {
               level: 1,
+              id: node.id,
               text: node.innerText.replace("#", ""),
               offsetH: node.offsetTop,
               highlight: false
@@ -134,6 +130,7 @@ export default {
           case "H2":
             menuItem = {
               level: 2,
+              id: node.id,
               text: node.innerText.replace("#", ""),
               offsetH: node.offsetTop,
               highlight: false
@@ -142,6 +139,7 @@ export default {
           case "H3":
             menuItem = {
               level: 3,
+              id: node.id,
               text: node.innerText.replace("#", ""),
               offsetH: node.offsetTop,
               highlight: false
@@ -150,6 +148,7 @@ export default {
           case "H4":
             menuItem = {
               level: 4,
+              id: node.id,
               text: node.innerText.replace("#", ""),
               offsetH: node.offsetTop,
               highlight: false
