@@ -43,7 +43,6 @@
                 />
               </a-form-model-item>
             </a-col>
-
             <a-col :span="6">
               <a-form-model-item label="发布状态">
                 <a-radio-group v-model="form.status">
@@ -88,24 +87,19 @@
       <div class="bottom-right">
         <!-- 富文本预览区域 -->
         <div class="html-area">
-          <div
-            class="markdown-body"
-            ref="highlightHTML"
-            v-html="reviewHTML"
-            v-highlight
-          >
-            预览区域
+          <div class="markdown-body" ref="highlightHTML">
+            <div class="theme-default-content content__default">
+              <Markdown :source="review"></Markdown>
+            </div>
           </div>
-          <div style="display:none">
-            <Markdown :source="review" @rendered="rendered"></Markdown>
-          </div>
+          <div style="display:none"></div>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-import Markdown from "@/components/Markdown";
+import Markdown from "@/components/markdown/index.vue";
 import { debounce } from "@/utils/index";
 import { save, getDetail, update } from "@/api/blog";
 import Hljs from "highlight.js";
@@ -128,7 +122,6 @@ export default {
     return {
       id: null,
       review: "",
-      reviewHTML: "",
       saving: false,
       disableSave: false,
       form: {
@@ -168,12 +161,15 @@ export default {
         });
     }
   },
-  mounted() {
-  },
+  mounted() {},
   methods: {
-    debounceRender:debounce(function() {
-      this.review = this.form.markdown.replace(/↵/gm, "\r");
-    }, 1000, false),
+    debounceRender: debounce(
+      function() {
+        this.review = this.form.markdown.replace(/↵/gm, "\r");
+      },
+      1000,
+      false
+    ),
     onSubmit() {
       // 获取HTML
       var check = [
@@ -237,9 +233,6 @@ export default {
           window.event.returnValue = false;
         }
       }
-    },
-    rendered(html) {
-      this.reviewHTML = html;
     }
   }
 };
