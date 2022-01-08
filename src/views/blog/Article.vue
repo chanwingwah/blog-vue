@@ -35,8 +35,11 @@
                   <span class="item-text">({{ article.viewCount }})</span>
                 </div>
               </div>
-              <div v-if="article.HTML">
-                <div v-html="article.HTML"></div>
+              <div v-if="article.HTML" class="markdown-body ">
+                <div
+                  v-html="article.HTML"
+                  class="theme-default-content content__default"
+                ></div>
               </div>
               <div>
                 <br />
