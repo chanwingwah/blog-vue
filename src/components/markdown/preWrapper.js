@@ -7,7 +7,7 @@
 //   3. <!--beforeend-->
 //   4. <!--afterend-->
 
-module.exports = md => {
+export default md => {
   const wrap = wrapped => (...args) => {
     const [tokens, idx] = args;
     const token = tokens[idx];

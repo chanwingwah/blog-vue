@@ -31,7 +31,7 @@ function getLangCodeFromExtension(extension) {
   return extensionMap[extension] || extension;
 }
 
-module.exports = (str, lang) => {
+export default (str, lang) => {
   if (!lang) {
     return wrap(str, "text");
   }
